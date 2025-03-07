@@ -1,10 +1,20 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Avatar } from '@/components/ui/avatar';
 import { MessageCircle, Eye, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Données factices pour les fils de discussion
+const categories = [
+  { id: 1, name: "Vendre sur Amazon", count: 86, color: "amber", emoji: "📦" },
+  { id: 2, name: "Comptabilité / Facturation", count: 42, color: "blue", emoji: "📊" },
+  { id: 3, name: "Import / Export", count: 38, color: "emerald", emoji: "🚢" },
+  { id: 4, name: "Amazon KDP", count: 54, color: "orange", emoji: "📚" },
+  { id: 5, name: "Amazon Merch On Demand", count: 47, color: "pink", emoji: "👕" },
+  { id: 6, name: "WordPress", count: 29, color: "blue", emoji: "🌐" },
+  { id: 7, name: "Shopify", count: 64, color: "green", emoji: "🛍️" },
+  { id: 8, name: "Growth Hacking", count: 33, color: "purple", emoji: "🚀" },
+  { id: 9, name: "SEO", count: 59, color: "indigo", emoji: "🔗" },
+];
+
 const allThreads = [
   {
     id: 1,
@@ -16,7 +26,7 @@ const allThreads = [
     date: "Il y a 2 heures",
     replies: 12,
     views: 89,
-    category: "Tutoriels",
+    category: { id: 8, name: "Growth Hacking", color: "purple", emoji: "🚀" },
     excerpt: "Découvrez les meilleures pratiques pour configurer votre tableau de bord et maximiser votre productivité...",
     lastActivity: "Il y a 30 minutes",
     participants: [
@@ -35,7 +45,7 @@ const allThreads = [
     date: "Hier",
     replies: 34,
     views: 215,
-    category: "Annonces",
+    category: { id: 7, name: "Shopify", color: "green", emoji: "🛍️" },
     excerpt: "La nouvelle version apporte des fonctionnalités très attendues comme l'intégration avec des outils externes...",
     lastActivity: "Il y a 2 heures",
     participants: [
@@ -55,7 +65,7 @@ const allThreads = [
     date: "Il y a 3 jours",
     replies: 8,
     views: 67,
-    category: "Support",
+    category: { id: 1, name: "Vendre sur Amazon", color: "amber", emoji: "📦" },
     excerpt: "Je rencontre un problème lors de la tentative de connexion à mon API externe. Le message d'erreur indique...",
     lastActivity: "Hier",
     participants: [
@@ -73,7 +83,7 @@ const allThreads = [
     date: "La semaine dernière",
     replies: 21,
     views: 104,
-    category: "Suggestions",
+    category: { id: 6, name: "WordPress", color: "blue", emoji: "🌐" },
     excerpt: "Il serait vraiment utile d'avoir un mode sombre pour réduire la fatigue oculaire lors de l'utilisation nocturne...",
     lastActivity: "Il y a 2 jours",
     participants: [
@@ -92,7 +102,7 @@ const allThreads = [
     date: "Il y a 2 semaines",
     replies: 15,
     views: 122,
-    category: "Tutoriels",
+    category: { id: 2, name: "Comptabilité / Facturation", color: "blue", emoji: "📊" },
     excerpt: "Les nouveaux rapports personnalisés offrent beaucoup de possibilités, voici un guide pas à pas pour créer...",
     lastActivity: "Il y a 4 jours",
     participants: [
@@ -110,7 +120,7 @@ const allThreads = [
     date: "Il y a 3 semaines",
     replies: 28,
     views: 143,
-    category: "Retours d'expérience",
+    category: { id: 4, name: "Amazon KDP", color: "orange", emoji: "📚" },
     excerpt: "Après un mois d'utilisation intensive, voici mes impressions et quelques astuces que j'ai découvertes...",
     lastActivity: "Il y a 1 semaine",
     participants: [
@@ -128,7 +138,7 @@ const allThreads = [
     date: "Il y a 1 mois",
     replies: 7,
     views: 53,
-    category: "Support",
+    category: { id: 9, name: "SEO", color: "indigo", emoji: "🔗" },
     excerpt: "L'exportation en PDF de mes rapports ne fonctionne pas correctement, les graphiques sont déformés...",
     lastActivity: "Il y a 2 semaines",
     participants: [
@@ -146,7 +156,7 @@ const allThreads = [
     date: "Il y a 2 mois",
     replies: 19,
     views: 98,
-    category: "Annonces",
+    category: { id: 3, name: "Import / Export", color: "emerald", emoji: "🚢" },
     excerpt: "Nous avons ajouté 5 nouveaux templates pour vos rapports mensuels, disponibles dès maintenant...",
     lastActivity: "Il y a 3 semaines",
     participants: [
@@ -157,7 +167,26 @@ const allThreads = [
   }
 ];
 
-// Composant pour un fil de discussion individuel
+const getCategoryColorClass = (color: string) => {
+  const colorMap: Record<string, string> = {
+    blue: "bg-blue-100 text-blue-800",
+    green: "bg-green-100 text-green-800",
+    amber: "bg-amber-100 text-amber-800",
+    purple: "bg-purple-100 text-purple-800",
+    red: "bg-red-100 text-red-800",
+    gray: "bg-gray-100 text-gray-800",
+    indigo: "bg-indigo-100 text-indigo-800",
+    emerald: "bg-emerald-100 text-emerald-800",
+    orange: "bg-orange-100 text-orange-800",
+    pink: "bg-pink-100 text-pink-800",
+    rose: "bg-rose-100 text-rose-800",
+    cyan: "bg-cyan-100 text-cyan-800",
+    teal: "bg-teal-100 text-teal-800",
+    yellow: "bg-yellow-100 text-yellow-800",
+  };
+  return colorMap[color] || colorMap.gray;
+};
+
 const ThreadCard = ({ thread }: { thread: any }) => {
   return (
     <div className="thread-card hover:shadow-md transition-shadow">
@@ -165,8 +194,10 @@ const ThreadCard = ({ thread }: { thread: any }) => {
         <div className="flex-grow">
           <h3 className="text-lg font-medium text-gray-900 mb-1">{thread.title}</h3>
           <div className="flex items-center space-x-2 mb-2">
-            <span className="px-2 py-0.5 bg-blue-100 text-blue-800 text-xs rounded-full">{thread.category}</span>
-            <span className="text-gray-500 text-sm opacity-70">Discussion créée {thread.date.toLowerCase()}</span>
+            <span className={`px-2 py-0.5 flex items-center gap-1 text-xs rounded-full ${getCategoryColorClass(thread.category.color)}`}>
+              <span>{thread.category.emoji}</span>
+              {thread.category.name}
+            </span>
           </div>
           <p className="text-gray-600 text-sm mb-3">{thread.excerpt}</p>
           <div className="flex items-center text-gray-500 text-sm">
@@ -174,13 +205,12 @@ const ThreadCard = ({ thread }: { thread: any }) => {
               <Avatar className="h-6 w-6 mr-2">
                 <img src={thread.author.avatar} alt={thread.author.name} />
               </Avatar>
-              <span>Par <a href="#" className="text-[#edb067] hover:underline">{thread.author.name}</a></span>
+              <span>Par <a href="#" className="text-[#edb067] hover:underline">{thread.author.name}</a> <span className="text-gray-500 opacity-70">• {thread.date.toLowerCase()}</span></span>
             </div>
           </div>
         </div>
         
         <div className="flex items-center space-x-8">
-          {/* Participants */}
           <div className="hidden md:flex items-center">
             <div className="flex -space-x-2">
               {thread.participants.slice(0, 3).map((participant: any, index: number) => (
@@ -196,19 +226,16 @@ const ThreadCard = ({ thread }: { thread: any }) => {
             </div>
           </div>
           
-          {/* Réponses */}
           <div className="flex items-center">
             <MessageCircle size={16} className="text-gray-400 mr-1" />
             <span className="text-sm text-gray-600">{thread.replies}</span>
           </div>
           
-          {/* Vues */}
           <div className="flex items-center">
             <Eye size={16} className="text-gray-400 mr-1" />
             <span className="text-sm text-gray-600">{thread.views}</span>
           </div>
           
-          {/* Activité */}
           <div className="hidden md:flex items-center">
             <Clock size={16} className="text-gray-400 mr-1" />
             <span className="text-sm text-gray-600 opacity-70">{thread.lastActivity}</span>
@@ -219,7 +246,6 @@ const ThreadCard = ({ thread }: { thread: any }) => {
   );
 };
 
-// Composant principal pour la liste des fils de discussion
 const ThreadList = () => {
   const [threads, setThreads] = useState(allThreads.slice(0, 5));
   const [loading, setLoading] = useState(false);
@@ -230,7 +256,6 @@ const ThreadList = () => {
     if (loading || !hasMore) return;
     
     setLoading(true);
-    // Simuler un délai de chargement
     setTimeout(() => {
       const currentSize = threads.length;
       const nextThreads = allThreads.slice(currentSize, currentSize + 3);
