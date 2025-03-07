@@ -1,7 +1,8 @@
-
 import React from 'react';
 import { Avatar } from '@/components/ui/avatar';
 import { MessageCircle, Eye, Clock } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 // Données factices pour les fils de discussion
 const threads = [
@@ -169,7 +170,12 @@ const ThreadList = () => {
     <div className="my-6">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Discussions récentes</h2>
-        <p className="text-gray-600">Rejoignez les conversations ou démarrez un nouveau sujet</p>
+        <p className="text-gray-600">
+          Rejoignez les conversations ou{" "}
+          <Link to="/create-thread" className="text-[#edb067] hover:underline">
+            démarrez un nouveau sujet
+          </Link>
+        </p>
       </div>
       
       <div className="space-y-4">
@@ -179,9 +185,9 @@ const ThreadList = () => {
       </div>
       
       <div className="mt-8 text-center">
-        <button className="btn btn-primary bg-[#edb067] hover:bg-[#e09d4e]">
+        <Button className="bg-[#edb067] hover:bg-[#e09d4e] text-white">
           Voir plus de discussions
-        </button>
+        </Button>
       </div>
     </div>
   );
