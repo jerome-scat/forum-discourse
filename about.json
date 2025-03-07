@@ -1,7 +1,7 @@
 
 {
   "name": "CockpitLab",
-  "component": true,
+  "component": false,
   "about_url": "https://github.com/jerome-scat/forum-discourse",
   "license_url": null,
   "authors": "Jerome",
