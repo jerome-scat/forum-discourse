@@ -1,18 +1,39 @@
 
 /* Styles pour le thème CockpitLab Discourse */
 
-/* Header principal */
-.d-header {
-  background-color: #0f172a;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Variables de couleurs */
+:root {
+  --primary-color: #edb067;
+  --primary-hover: #e09d4e;
+  --bg-dark: #0f172a;
+  --text-light: #ffffff;
+  --text-dark: #0f172a;
+  --bg-hover: #f8fafc;
+  --border-light: #e5e7eb;
+  --border-hover: #d1d5db;
+  --gray-text: #6b7280;
 }
 
-.d-header-icons .icon {
-  color: white;
+/* Reset de base pour Discourse */
+.d-header-icons .d-icon,
+.d-header .d-icon {
+  color: var(--text-light);
+}
+
+/* Header principal */
+.d-header {
+  background-color: var(--bg-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+}
+
+.d-header-icons .icon,
+.d-header-icons .d-icon {
+  color: var(--text-light);
 }
 
 .d-header .title a {
-  color: white;
+  color: var(--text-light);
 }
 
 /* Logo */
@@ -21,67 +42,153 @@
 }
 
 /* Boutons principaux */
-.btn-primary {
-  background-color: #edb067;
-  border-color: #edb067;
+.btn-primary,
+.btn.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-light);
+  border-radius: 9999px;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
-.btn-primary:hover {
-  background-color: #e09d4e;
-  border-color: #e09d4e;
+.btn-primary:hover,
+.btn.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
 }
 
 /* Boutons secondaires */
-.btn-default {
+.btn-default,
+.btn.btn-default,
+.btn.btn-flat.btn-text {
   background-color: #f3f4f6;
-  border-color: #e5e7eb;
+  border-color: var(--border-light);
+  border-radius: 9999px;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
-.btn-default:hover {
-  background-color: #e5e7eb;
-  border-color: #d1d5db;
+.btn-default:hover,
+.btn.btn-default:hover,
+.btn.btn-flat.btn-text:hover {
+  background-color: var(--border-light);
+  border-color: var(--border-hover);
 }
 
-/* Styles pour les catégories */
-.category-list tbody tr {
+/* Navigation principale */
+.nav-pills > li > a {
+  border-radius: 9999px;
   transition: background-color 0.2s;
 }
 
-.category-list tbody tr:hover {
-  background-color: #f8fafc;
-}
-
-/* Styles pour les sujets */
-.topic-list .topic-list-item {
-  transition: background-color 0.2s;
-}
-
-.topic-list .topic-list-item:hover {
-  background-color: #f8fafc;
-}
-
-/* Pour les textes avec accent de couleur */
-.accent-text, a.mention {
-  color: #edb067;
-}
-
-/* Navigation */
 .nav-pills > li.active > a,
 .nav-pills > li > a.active {
-  background-color: #edb067;
+  background-color: var(--primary-color);
+  color: var(--text-light);
 }
 
 .nav-pills > li > a:hover {
-  background-color: #f8fafc;
+  background-color: var(--bg-hover);
+}
+
+/* Styles pour les catégories */
+.category-list {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.category-list tbody tr {
+  transition: background-color 0.2s;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.category-list tbody tr:hover {
+  background-color: var(--bg-hover);
+}
+
+/* Styles pour les sujets */
+.topic-list {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.topic-list .topic-list-item {
+  transition: background-color 0.2s;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.topic-list .topic-list-item:hover {
+  background-color: var(--bg-hover);
+}
+
+/* Pour les textes avec accent de couleur */
+.accent-text, 
+a.mention, 
+a {
+  color: var(--primary-color);
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Badge de catégorie */
+.badge-wrapper {
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.badge-wrapper.bullet span.badge-category {
+  border-radius: 9999px;
+  padding: 2px 8px;
+}
+
+/* Arrondir les avatars */
+.avatar,
+img.avatar {
+  border-radius: 50%;
+}
+
+/* Styliser les cartes des utilisateurs */
+.user-card,
+.group-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-light);
+}
+
+/* Menus déroulants */
+.menu-panel,
+.dropdown-menu {
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-light);
 }
 
 /* Footer */
 .footer-nav a {
-  color: #6b7280;
+  color: var(--gray-text);
+  transition: color 0.2s;
 }
 
 .footer-nav a:hover {
-  color: #edb067;
+  color: var(--primary-color);
+}
+
+/* Barre de recherche */
+.search-widget input[type="text"] {
+  border-radius: 9999px;
+  border: 1px solid var(--border-light);
+  padding: 8px 16px;
+  background-color: #f3f4f6;
+}
+
+/* Notifications */
+.d-header .icons .icon {
+  border-radius: 50%;
 }
 
 /* Pour le mode sombre */
@@ -95,34 +202,75 @@
 }
 
 .discourse-dark-theme .btn-primary {
-  background-color: #edb067;
-  border-color: #edb067;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .discourse-dark-theme .btn-primary:hover {
-  background-color: #e09d4e;
-  border-color: #e09d4e;
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
 }
 
-/* Badges */
-.badge-wrapper {
-  border-radius: 9999px;
-  overflow: hidden;
-}
-
-/* Arrondir les avatars */
-.avatar {
-  border-radius: 50%;
-}
-
-/* Styliser les cartes des utilisateurs */
-.user-card {
+/* Amélioration de l'apparence des posts */
+.topic-body {
   border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 0.5rem 0;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Menus déroulants */
-.menu-panel {
+.topic-post {
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* Amélioration des composants de formulaire */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
   border-radius: 8px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-light);
+  padding: 8px 12px;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(237, 176, 103, 0.2);
+}
+
+/* Styliser les messages de notification */
+.alert {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Améliorer l'apparence des tabs */
+.nav-tabs {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-tabs > li > a {
+  border-radius: 8px 8px 0 0;
+  transition: background-color 0.2s;
+}
+
+.nav-tabs > li.active > a {
+  border-bottom-color: #ffffff;
+}
+
+/* Améliorer les boutons d'action dans les posts */
+.post-controls .actions button {
+  border-radius: 9999px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.post-controls .actions button:hover {
+  background-color: var(--bg-hover);
+  color: var(--primary-color);
 }
