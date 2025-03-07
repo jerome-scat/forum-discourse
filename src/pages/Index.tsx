@@ -6,6 +6,15 @@ import Sidebar from '@/components/Sidebar';
 import ThreadList from '@/components/ThreadList';
 
 const Index = () => {
+  // Function to handle contact link click
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Redirect to discourse direct message URL
+    // Replace 'username' with the actual discourse username
+    window.location.href = 'https://community.cockpitlab.com/new-message?username=admin';
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Navbar />
@@ -31,7 +40,7 @@ const Index = () => {
             <div className="flex flex-wrap justify-center gap-4 md:space-x-4">
               <a href="#" className="text-gray-600 hover:text-gray-900 text-sm">Conditions d'utilisation</a>
               <a href="#" className="text-gray-600 hover:text-gray-900 text-sm">Politique de confidentialité</a>
-              <a href="#" className="text-gray-600 hover:text-gray-900 text-sm">Contact</a>
+              <a href="#" onClick={handleContactClick} className="text-gray-600 hover:text-gray-900 text-sm">Contact</a>
             </div>
           </div>
         </div>
