@@ -9,7 +9,7 @@
   "minimum_discourse_version": null,
   "maximum_discourse_version": null,
   "assets": {
-    "common_scss": "src/styles/common.scss"
+    "main_css": "src/styles/index.css"
   },
   "color_schemes": {
   },
