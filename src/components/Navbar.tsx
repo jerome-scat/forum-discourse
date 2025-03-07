@@ -11,10 +11,12 @@ const Navbar = () => {
     <div className="navbar flex items-center justify-between">
       <div className="flex items-center space-x-6">
         {/* Menu Aide */}
-        <div className="relative">
+        <div className="relative"
+          onMouseEnter={() => setHelpOpen(true)}
+          onMouseLeave={() => setHelpOpen(false)}
+        >
           <button 
             className="flex items-center text-white/80 hover:text-white"
-            onClick={() => setHelpOpen(!helpOpen)}
           >
             Aide <ChevronDown size={16} className="ml-1" />
           </button>
@@ -29,10 +31,12 @@ const Navbar = () => {
         </div>
         
         {/* Menu Nouveautés */}
-        <div className="relative">
+        <div className="relative"
+          onMouseEnter={() => setNewsOpen(true)}
+          onMouseLeave={() => setNewsOpen(false)}
+        >
           <button 
             className="flex items-center text-white/80 hover:text-white"
-            onClick={() => setNewsOpen(!newsOpen)}
           >
             Nouveautés <ChevronDown size={16} className="ml-1" />
           </button>
@@ -46,10 +50,12 @@ const Navbar = () => {
         </div>
         
         {/* Menu Réseaux sociaux */}
-        <div className="relative">
+        <div className="relative"
+          onMouseEnter={() => setSocialOpen(true)}
+          onMouseLeave={() => setSocialOpen(false)}
+        >
           <button 
             className="flex items-center text-white/80 hover:text-white"
-            onClick={() => setSocialOpen(!socialOpen)}
           >
             Réseaux sociaux <ChevronDown size={16} className="ml-1" />
           </button>
