@@ -62,7 +62,7 @@ const CategoryItem = ({ category }: { category: any }) => {
 
 const Sidebar = () => {
   return (
-    <div className="w-full md:w-64 md:pr-6">
+    <div className="w-full md:w-80 lg:w-96 md:pr-6">
       <div className="mb-6">
         <button className="w-full btn btn-primary flex items-center justify-center">
           Nouvelle discussion
