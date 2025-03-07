@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Tag as TagIcon } from 'lucide-react';
 
 const categories = [
   { id: 1, name: "Vendre sur Amazon", count: 86, color: "amber", emoji: "📦" },
@@ -18,6 +19,15 @@ const categories = [
   { id: 14, name: "Vendre sur Fnac", count: 23, color: "yellow", emoji: "📀" },
   { id: 15, name: "Vendre sur Cdiscount", count: 27, color: "blue", emoji: "💼" },
   { id: 16, name: "Amazon MWS-SP API (Développeur)", count: 31, color: "gray", emoji: "💻" },
+];
+
+const tags = [
+  { id: 1, name: "Amazon FBA", color: "blue" },
+  { id: 2, name: "Amazon FBM", color: "green" },
+  { id: 3, name: "Seller Central", color: "amber" },
+  { id: 4, name: "PPC", color: "purple" },
+  { id: 5, name: "Helium10", color: "pink" },
+  { id: 6, name: "Retail Arbitrage", color: "cyan" },
 ];
 
 const CategoryItem = ({ category }: { category: any }) => {
@@ -54,6 +64,36 @@ const CategoryItem = ({ category }: { category: any }) => {
   );
 };
 
+const TagItem = ({ tag }: { tag: any }) => {
+  const getColorClass = (color: string) => {
+    const colorMap: Record<string, string> = {
+      blue: "bg-blue-100 text-blue-800",
+      green: "bg-green-100 text-green-800",
+      amber: "bg-amber-100 text-amber-800",
+      purple: "bg-purple-100 text-purple-800",
+      red: "bg-red-100 text-red-800",
+      gray: "bg-gray-100 text-gray-800",
+      indigo: "bg-indigo-100 text-indigo-800",
+      emerald: "bg-emerald-100 text-emerald-800",
+      orange: "bg-orange-100 text-orange-800",
+      pink: "bg-pink-100 text-pink-800",
+      rose: "bg-rose-100 text-rose-800",
+      cyan: "bg-cyan-100 text-cyan-800",
+      teal: "bg-teal-100 text-teal-800",
+      yellow: "bg-yellow-100 text-yellow-800",
+    };
+    return colorMap[tag.color] || colorMap.gray;
+  };
+
+  return (
+    <a href="#" className="inline-block px-2 py-1 m-1 rounded-lg hover:bg-gray-50">
+      <span className={`text-xs px-2 py-0.5 rounded-full ${getColorClass(tag.color)}`}>
+        {tag.name}
+      </span>
+    </a>
+  );
+};
+
 const Sidebar = () => {
   return (
     <div className="w-full md:w-80 lg:w-96 md:pr-6">
@@ -63,16 +103,28 @@ const Sidebar = () => {
         </button>
       </div>
       
-      <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100">
+      <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100 mb-4">
         <h3 className="font-medium text-gray-900 mb-3">Catégories</h3>
-        <div className="space-y-1 max-h-[60vh] overflow-y-auto pr-1">
+        <div className="space-y-1 max-h-[40vh] overflow-y-auto pr-1">
           {categories.map(category => (
             <CategoryItem key={category.id} category={category} />
           ))}
         </div>
       </div>
       
-      <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100 mt-4">
+      <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100 mb-4">
+        <h3 className="font-medium text-gray-900 mb-3 flex items-center gap-2">
+          <TagIcon size={16} />
+          Tags
+        </h3>
+        <div className="flex flex-wrap">
+          {tags.map(tag => (
+            <TagItem key={tag.id} tag={tag} />
+          ))}
+        </div>
+      </div>
+      
+      <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100">
         <h3 className="font-medium text-gray-900 mb-3">Statistiques</h3>
         <div className="grid grid-cols-2 md:block gap-2 text-sm text-gray-600">
           <div className="flex justify-between">
