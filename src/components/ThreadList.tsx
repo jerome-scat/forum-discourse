@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Avatar } from '@/components/ui/avatar';
-import { MessageCircle, Eye, Clock } from 'lucide-react';
+import { MessageCircle, Eye, Clock, Tag as TagIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const categories = [
@@ -15,6 +16,16 @@ const categories = [
   { id: 9, name: "SEO", count: 59, color: "indigo", emoji: "🔗" },
 ];
 
+// Liste des tags disponibles
+const availableTags = [
+  { id: 1, name: "Amazon FBA", color: "sky" },
+  { id: 2, name: "Amazon FBM", color: "rose" },
+  { id: 3, name: "Seller Central", color: "emerald" },
+  { id: 4, name: "PPC", color: "indigo" },
+  { id: 5, name: "Helium10", color: "amber" },
+  { id: 6, name: "Retail Arbitrage", color: "purple" },
+];
+
 const allThreads = [
   {
     id: 1,
@@ -27,6 +38,7 @@ const allThreads = [
     replies: 12,
     views: 89,
     category: { id: 8, name: "Growth Hacking", color: "purple", emoji: "🚀" },
+    tags: [availableTags[3], availableTags[4]],  // PPC, Helium10
     excerpt: "Découvrez les meilleures pratiques pour configurer votre tableau de bord et maximiser votre productivité...",
     lastActivity: "Il y a 30 minutes",
     participants: [
@@ -46,6 +58,7 @@ const allThreads = [
     replies: 34,
     views: 215,
     category: { id: 7, name: "Shopify", color: "green", emoji: "🛍️" },
+    tags: [availableTags[5]],  // Retail Arbitrage
     excerpt: "La nouvelle version apporte des fonctionnalités très attendues comme l'intégration avec des outils externes...",
     lastActivity: "Il y a 2 heures",
     participants: [
@@ -66,6 +79,7 @@ const allThreads = [
     replies: 8,
     views: 67,
     category: { id: 1, name: "Vendre sur Amazon", color: "amber", emoji: "📦" },
+    tags: [availableTags[0], availableTags[2]],  // Amazon FBA, Seller Central
     excerpt: "Je rencontre un problème lors de la tentative de connexion à mon API externe. Le message d'erreur indique...",
     lastActivity: "Hier",
     participants: [
@@ -84,6 +98,7 @@ const allThreads = [
     replies: 21,
     views: 104,
     category: { id: 6, name: "WordPress", color: "blue", emoji: "🌐" },
+    tags: [],
     excerpt: "Il serait vraiment utile d'avoir un mode sombre pour réduire la fatigue oculaire lors de l'utilisation nocturne...",
     lastActivity: "Il y a 2 jours",
     participants: [
@@ -103,6 +118,7 @@ const allThreads = [
     replies: 15,
     views: 122,
     category: { id: 2, name: "Comptabilité / Facturation", color: "blue", emoji: "📊" },
+    tags: [availableTags[2], availableTags[4]],  // Seller Central, Helium10
     excerpt: "Les nouveaux rapports personnalisés offrent beaucoup de possibilités, voici un guide pas à pas pour créer...",
     lastActivity: "Il y a 4 jours",
     participants: [
@@ -121,6 +137,7 @@ const allThreads = [
     replies: 28,
     views: 143,
     category: { id: 4, name: "Amazon KDP", color: "orange", emoji: "📚" },
+    tags: [availableTags[0], availableTags[1]],  // Amazon FBA, Amazon FBM
     excerpt: "Après un mois d'utilisation intensive, voici mes impressions et quelques astuces que j'ai découvertes...",
     lastActivity: "Il y a 1 semaine",
     participants: [
@@ -139,6 +156,7 @@ const allThreads = [
     replies: 7,
     views: 53,
     category: { id: 9, name: "SEO", color: "indigo", emoji: "🔗" },
+    tags: [],
     excerpt: "L'exportation en PDF de mes rapports ne fonctionne pas correctement, les graphiques sont déformés...",
     lastActivity: "Il y a 2 semaines",
     participants: [
@@ -157,6 +175,7 @@ const allThreads = [
     replies: 19,
     views: 98,
     category: { id: 3, name: "Import / Export", color: "emerald", emoji: "🚢" },
+    tags: [availableTags[2], availableTags[3]],  // Seller Central, PPC
     excerpt: "Nous avons ajouté 5 nouveaux templates pour vos rapports mensuels, disponibles dès maintenant...",
     lastActivity: "Il y a 3 semaines",
     participants: [
@@ -183,6 +202,7 @@ const getCategoryColorClass = (color: string) => {
     cyan: "bg-cyan-100 text-cyan-800",
     teal: "bg-teal-100 text-teal-800",
     yellow: "bg-yellow-100 text-yellow-800",
+    sky: "bg-sky-100 text-sky-800",
   };
   return colorMap[color] || colorMap.gray;
 };
@@ -199,6 +219,25 @@ const ThreadCard = ({ thread }: { thread: any }) => {
               {thread.category.name}
             </span>
           </div>
+          
+          {/* Affichage des tags */}
+          {thread.tags && thread.tags.length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5 mb-2">
+              <span className="text-xs text-gray-500 flex items-center">
+                <TagIcon size={12} className="mr-1" />
+                Tags:
+              </span>
+              {thread.tags.map((tag: any, index: number) => (
+                <span 
+                  key={index} 
+                  className={`px-2 py-0.5 text-xs rounded-full ${getCategoryColorClass(tag.color)} inline-flex items-center`}
+                >
+                  {tag.name}
+                </span>
+              ))}
+            </div>
+          )}
+          
           <p className="text-gray-600 text-sm mb-3">{thread.excerpt}</p>
           <div className="flex items-center text-gray-500 text-sm">
             <div className="flex items-center mr-4">
