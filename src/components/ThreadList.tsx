@@ -1,11 +1,11 @@
-import React from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 import { Avatar } from '@/components/ui/avatar';
 import { MessageCircle, Eye, Clock } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 // Données factices pour les fils de discussion
-const threads = [
+const allThreads = [
   {
     id: 1,
     title: "Comment optimiser votre tableau de bord ?",
@@ -99,6 +99,61 @@ const threads = [
       { name: "Jean Dupont", avatar: "https://i.pravatar.cc/150?img=1" },
       { name: "Admin", avatar: "https://i.pravatar.cc/150?img=2" }
     ]
+  },
+  {
+    id: 6,
+    title: "Retour d'expérience après 1 mois d'utilisation",
+    author: {
+      name: "Thomas Martin",
+      avatar: "https://i.pravatar.cc/150?img=10"
+    },
+    date: "Il y a 3 semaines",
+    replies: 28,
+    views: 143,
+    category: "Retours d'expérience",
+    excerpt: "Après un mois d'utilisation intensive, voici mes impressions et quelques astuces que j'ai découvertes...",
+    lastActivity: "Il y a 1 semaine",
+    participants: [
+      { name: "Jean Dupont", avatar: "https://i.pravatar.cc/150?img=1" },
+      { name: "Sophie Leblanc", avatar: "https://i.pravatar.cc/150?img=9" }
+    ]
+  },
+  {
+    id: 7,
+    title: "Problème avec l'exportation PDF",
+    author: {
+      name: "Claire Dubois",
+      avatar: "https://i.pravatar.cc/150?img=11"
+    },
+    date: "Il y a 1 mois",
+    replies: 7,
+    views: 53,
+    category: "Support",
+    excerpt: "L'exportation en PDF de mes rapports ne fonctionne pas correctement, les graphiques sont déformés...",
+    lastActivity: "Il y a 2 semaines",
+    participants: [
+      { name: "Admin", avatar: "https://i.pravatar.cc/150?img=2" },
+      { name: "Pierre Martin", avatar: "https://i.pravatar.cc/150?img=8" }
+    ]
+  },
+  {
+    id: 8,
+    title: "Nouveaux templates disponibles",
+    author: {
+      name: "Admin",
+      avatar: "https://i.pravatar.cc/150?img=2"
+    },
+    date: "Il y a 2 mois",
+    replies: 19,
+    views: 98,
+    category: "Annonces",
+    excerpt: "Nous avons ajouté 5 nouveaux templates pour vos rapports mensuels, disponibles dès maintenant...",
+    lastActivity: "Il y a 3 semaines",
+    participants: [
+      { name: "Jean Dupont", avatar: "https://i.pravatar.cc/150?img=1" },
+      { name: "Marie Durand", avatar: "https://i.pravatar.cc/150?img=5" },
+      { name: "Thomas Martin", avatar: "https://i.pravatar.cc/150?img=10" }
+    ]
   }
 ];
 
@@ -166,6 +221,53 @@ const ThreadCard = ({ thread }: { thread: any }) => {
 
 // Composant principal pour la liste des fils de discussion
 const ThreadList = () => {
+  const [threads, setThreads] = useState(allThreads.slice(0, 5));
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const loaderRef = useRef<HTMLDivElement>(null);
+
+  const loadMoreThreads = () => {
+    if (loading || !hasMore) return;
+    
+    setLoading(true);
+    // Simuler un délai de chargement
+    setTimeout(() => {
+      const currentSize = threads.length;
+      const nextThreads = allThreads.slice(currentSize, currentSize + 3);
+      
+      if (nextThreads.length > 0) {
+        setThreads(prevThreads => [...prevThreads, ...nextThreads]);
+      }
+      
+      if (currentSize + nextThreads.length >= allThreads.length) {
+        setHasMore(false);
+      }
+      
+      setLoading(false);
+    }, 800);
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && hasMore) {
+          loadMoreThreads();
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    };
+  }, [hasMore, loading, threads]);
+
   return (
     <div className="my-6">
       <div className="mb-6">
@@ -184,11 +286,28 @@ const ThreadList = () => {
         ))}
       </div>
       
-      <div className="mt-8 text-center">
-        <Button className="bg-[#edb067] hover:bg-[#e09d4e] text-white">
-          Voir plus de discussions
-        </Button>
-      </div>
+      {hasMore && (
+        <div 
+          ref={loaderRef} 
+          className="mt-8 text-center py-4"
+        >
+          {loading ? (
+            <div className="flex justify-center items-center space-x-2">
+              <div className="w-2 h-2 bg-[#edb067] rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-[#edb067] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              <div className="w-2 h-2 bg-[#edb067] rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+            </div>
+          ) : (
+            <span className="text-gray-500">Faites défiler pour voir plus</span>
+          )}
+        </div>
+      )}
+      
+      {!hasMore && (
+        <div className="mt-8 text-center">
+          <span className="text-gray-500">Toutes les discussions ont été chargées</span>
+        </div>
+      )}
     </div>
   );
 };
