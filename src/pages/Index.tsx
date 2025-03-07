@@ -11,8 +11,7 @@ const Index = () => {
     e.preventDefault();
     
     // Redirect to discourse direct message URL
-    // Replace 'username' with the actual discourse username
-    window.location.href = 'https://community.cockpitlab.com/new-message?username=admin';
+    window.location.href = 'https://community.cockpitlab.com/new-message?username=Jerome';
   };
 
   return (
