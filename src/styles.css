@@ -1,2 +1,243 @@
 
+/* CockpitLab Discourse Theme - Main Styles */
 
+/* Core Variables */
+:root {
+  --primary-color: #edb067;
+  --primary-hover: #e09d4e;
+  --text-color: #333333;
+  --bg-light: #f8f8f8;
+  --border-color: #dddddd;
+  --footer-bg: #f2f2f2;
+  --header-height: 60px;
+}
+
+/* Reset and Base Styles */
+.custom-header-container,
+.custom-footer-container {
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* Top Navigation Styles */
+.top-navbar {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  font-size: 14px !important;
+  height: auto !important;
+  padding: 0.25rem 1rem !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+.top-navbar .container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 15px !important;
+}
+
+.top-navbar a {
+  color: white !important;
+  text-decoration: none !important;
+  margin: 0 10px !important;
+  font-weight: 500 !important;
+}
+
+.top-navbar a:hover {
+  text-decoration: underline !important;
+}
+
+/* Forum Header Styles */
+.d-header {
+  background-color: white !important;
+  border-bottom: 3px solid var(--primary-color) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.d-header-icons .icon {
+  color: var(--text-color) !important;
+}
+
+.d-header-icons .icon:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Navigation Pills */
+.nav-pills > li.active > a,
+.nav-pills > li > a.active {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.nav-pills > li > a:hover {
+  background-color: var(--primary-hover) !important;
+  color: white !important;
+}
+
+/* Buttons */
+.btn.btn-primary,
+.btn-primary,
+.btn.btn.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.btn.btn-primary:hover,
+.btn-primary:hover,
+.btn.btn.btn-primary:hover {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+}
+
+/* Links */
+a, 
+a.widget-link, 
+a.mention, 
+.link, 
+.topic-title {
+  color: var(--primary-color) !important;
+}
+
+a:hover, 
+a.widget-link:hover, 
+a.mention:hover, 
+.link:hover, 
+.topic-title:hover {
+  color: var(--primary-hover) !important;
+}
+
+/* Custom Footer */
+.custom-footer {
+  background-color: var(--footer-bg) !important;
+  color: var(--text-color) !important;
+  padding: 2rem 1rem !important;
+  text-align: center !important;
+  margin-top: 2rem !important;
+  width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 100 !important;
+}
+
+.custom-footer .container {
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+.footer-top {
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-bottom: 2rem !important;
+  flex-wrap: wrap !important;
+}
+
+.footer-section {
+  flex: 1 !important;
+  min-width: 200px !important;
+  margin-bottom: 1.5rem !important;
+  text-align: left !important;
+}
+
+.footer-section h4 {
+  color: var(--text-color) !important;
+  font-size: 18px !important;
+  margin-bottom: 1rem !important;
+  font-weight: 600 !important;
+}
+
+.footer-section ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem !important;
+}
+
+.footer-section a {
+  color: var(--text-color) !important;
+  text-decoration: none !important;
+}
+
+.footer-section a:hover {
+  color: var(--primary-color) !important;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-color) !important;
+  padding-top: 1.5rem !important;
+  text-align: center !important;
+}
+
+.footer-logo {
+  max-width: 150px !important;
+  margin-bottom: 1rem !important;
+}
+
+.footer-bottom p {
+  margin: 0 !important;
+  font-size: 14px !important;
+  color: #666 !important;
+}
+
+.social-links {
+  display: flex !important;
+  justify-content: center !important;
+  margin: 1rem 0 !important;
+}
+
+.social-links a {
+  margin: 0 10px !important;
+  color: #666 !important;
+}
+
+.social-links a:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .top-navbar .container,
+  .footer-top {
+    flex-direction: column !important;
+  }
+  
+  .footer-section {
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Force specific discourse elements */
+#main-outlet {
+  padding-top: 30px !important;
+}
+
+.alert.alert-info {
+  border-color: var(--primary-color) !important;
+}
+
+/* Make sure these elements are visible regardless of other CSS */
+body .top-navbar,
+body .custom-footer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix spacing issues */
+.wrap {
+  padding-bottom: 2rem !important;
+}
