@@ -11,19 +11,19 @@ const Index = () => {
       <Navbar />
       <Header />
       
-      <div className="container mx-auto px-4 py-6 flex-grow border-x border-gray-200">
+      <div className="container mx-auto px-4 py-6 flex-grow">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="md:w-80 lg:w-96 order-2 md:order-1">
             <Sidebar />
           </div>
-          <div className="flex-grow order-1 md:order-2 border-l border-gray-200 pl-6">
+          <div className="flex-grow order-1 md:order-2">
             <ThreadList />
           </div>
         </div>
       </div>
       
       <footer className="bg-white border-t border-gray-200 py-6">
-        <div className="container mx-auto px-4 border-x border-gray-200">
+        <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div>
               <p className="text-gray-600 text-sm">© 2023 CockpitLab. Tous droits réservés.</p>
