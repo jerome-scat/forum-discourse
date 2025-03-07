@@ -6,7 +6,7 @@ import { Search } from 'lucide-react';
 
 const Header = () => {
   return (
-    <header className="header flex items-center justify-between">
+    <header className="header flex items-center justify-between sticky top-0 z-10 bg-white shadow-sm py-4 px-4">
       {/* Logo */}
       <div className="flex-shrink-0">
         <a href="/" className="text-xl font-bold">CockpitLab</a>
