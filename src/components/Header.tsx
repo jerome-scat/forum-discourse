@@ -32,7 +32,7 @@ const Header = () => {
         >
           Se connecter
         </Button>
-        <Button className="rounded-full bg-blue-600 hover:bg-blue-700">
+        <Button className="rounded-full bg-[#edb067] hover:bg-[#e09d4e]">
           S'inscrire
         </Button>
       </div>

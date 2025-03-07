@@ -10,8 +10,6 @@ const Navbar = () => {
   return (
     <div className="navbar flex items-center justify-between">
       <div className="flex items-center space-x-6">
-        <a href="/" className="text-white font-medium">Finary</a>
-        
         {/* Menu Aide */}
         <div className="relative">
           <button 
@@ -22,7 +20,7 @@ const Navbar = () => {
           </button>
           
           {helpOpen && (
-            <div className="absolute top-full left-0 mt-2 bg-white text-black rounded-lg shadow-lg py-2 min-w-40">
+            <div className="absolute top-full left-0 mt-2 bg-white text-black rounded-lg shadow-lg py-2 min-w-40 z-50">
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">Centre d'aide</a>
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">FAQ</a>
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">Contact</a>
@@ -40,7 +38,7 @@ const Navbar = () => {
           </button>
           
           {newsOpen && (
-            <div className="absolute top-full left-0 mt-2 bg-white text-black rounded-lg shadow-lg py-2 min-w-40">
+            <div className="absolute top-full left-0 mt-2 bg-white text-black rounded-lg shadow-lg py-2 min-w-40 z-50">
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">Dernières mises à jour</a>
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">Roadmap</a>
             </div>
@@ -57,7 +55,7 @@ const Navbar = () => {
           </button>
           
           {socialOpen && (
-            <div className="absolute top-full left-0 mt-2 bg-white text-black rounded-lg shadow-lg py-2 min-w-40">
+            <div className="absolute top-full left-0 mt-2 bg-white text-black rounded-lg shadow-lg py-2 min-w-40 z-50">
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">Twitter</a>
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">LinkedIn</a>
               <a href="#" className="block px-4 py-2 hover:bg-gray-100">Instagram</a>
