@@ -1,2 +1,49 @@
 
+/* Styles pour le thème CockpitLab Discourse */
+.d-header {
+  background-color: #0f172a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.d-header-icons .icon {
+  color: white;
+}
+
+.d-header .title a {
+  color: white;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+/* Styles pour les catégories */
+.category-list tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Styles pour les sujets */
+.topic-list .topic-list-item:hover {
+  background-color: #f8fafc;
+}
+
+/* Pour les textes avec accent de couleur */
+.accent-text {
+  color: #2563eb;
+}
+
+/* Pour le mode sombre */
+.discourse-dark-theme .d-header {
+  background-color: #020617;
+}
+
+.discourse-dark-theme .category-list tbody tr:hover,
+.discourse-dark-theme .topic-list .topic-list-item:hover {
+  background-color: #1e293b;
+}

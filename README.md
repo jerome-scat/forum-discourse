@@ -1,69 +1,59 @@
-# Welcome to your Lovable project
+
+# CockpitLab Discourse Theme
+
+This is a custom theme for Discourse forums.
 
 ## Project info
 
 **URL**: https://lovable.dev/projects/d0e2635d-5d79-4fe5-b214-38d324072055
+**GitHub**: https://github.com/jerome-scat/forum-discourse
 
-## How can I edit this code?
+## How to install on Discourse
 
-There are several ways of editing your application.
+### Method 1: Via GitHub repository (recommended)
 
-**Use Lovable**
+1. Go to your Discourse admin panel
+2. Navigate to Admin > Customize > Themes
+3. Click on "Install" > "From a git repository"
+4. Enter the repository URL: `https://github.com/jerome-scat/forum-discourse.git`
+5. Click "Install"
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d0e2635d-5d79-4fe5-b214-38d324072055) and start prompting.
+### Method 2: Via ZIP file
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Download the ZIP file of this repository
+2. Go to your Discourse admin panel
+3. Navigate to Admin > Customize > Themes
+4. Click on "Install" > "From a local file"
+5. Upload the ZIP file
+6. Click "Install"
 
-**Use your preferred IDE**
+## Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+The theme follows the Discourse theme structure:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- `about.json`: Contains theme metadata
+- `src/styles.css`: Contains custom CSS styles
+- Additional assets and components may be added as needed
 
-Follow these steps:
+## Development
+
+To develop this theme locally:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Step 1: Clone the repository
+git clone https://github.com/jerome-scat/forum-discourse.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate to the project directory
+cd forum-discourse
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Make your changes
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Step 4: Commit and push your changes
+git add .
+git commit -m "Your commit message"
+git push
 ```
 
-**Edit a file directly in GitHub**
+## License
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/d0e2635d-5d79-4fe5-b214-38d324072055) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+This theme is available under the MIT license.
