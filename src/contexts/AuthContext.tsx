@@ -1,10 +1,10 @@
+
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { useToast } from "@/hooks/use-toast";
 
 interface AuthContextProps {
   isAuthenticated: boolean;
   login: () => void;
-  loginWithGithub: () => void;
   logout: () => void;
   showAuthModal: boolean;
   setShowAuthModal: (show: boolean) => void;
@@ -45,32 +45,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       title: "Connexion réussie",
       description: "Bienvenue sur CockpitLab !",
     });
-  };
-
-  const loginWithGithub = () => {
-    // Simulating GitHub authentication
-    console.log('Connexion avec GitHub en cours...');
-    
-    // In a real app, you would redirect to GitHub OAuth flow here
-    // window.location.href = 'https://github.com/login/oauth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI';
-    
-    // For demo purposes, we'll just authenticate the user directly
-    setTimeout(() => {
-      setIsAuthenticated(true);
-      localStorage.setItem('isAuthenticated', 'true');
-      setShowAuthModal(false);
-      
-      // Clear any existing timeouts
-      if (timeoutId) {
-        window.clearTimeout(timeoutId);
-        setTimeoutId(null);
-      }
-      
-      toast({
-        title: "Connexion GitHub réussie",
-        description: "Bienvenue sur CockpitLab !",
-      });
-    }, 1000); // Simulate network delay
   };
 
   const logout = () => {
@@ -127,7 +101,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const value = {
     isAuthenticated,
     login,
-    loginWithGithub,
     logout,
     showAuthModal,
     setShowAuthModal
