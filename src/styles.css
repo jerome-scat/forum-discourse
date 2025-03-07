@@ -1,22 +1,21 @@
-
 /* Styles pour le thème CockpitLab Discourse */
 
 /* Variables de couleurs */
 :root {
-  --primary-color: #edb067;
-  --primary-hover: #e09d4e;
-  --bg-dark: #0f172a;
-  --text-light: #ffffff;
-  --text-dark: #0f172a;
-  --bg-hover: #f8fafc;
-  --border-light: #e5e7eb;
-  --border-hover: #d1d5db;
-  --gray-text: #6b7280;
+  --primary-color: #edb067 !important;
+  --primary-hover: #e09d4e !important;
+  --bg-dark: #0f172a !important;
+  --text-light: #ffffff !important;
+  --text-dark: #0f172a !important;
+  --bg-hover: #f8fafc !important;
+  --border-light: #e5e7eb !important;
+  --border-hover: #d1d5db !important;
+  --gray-text: #6b7280 !important;
 }
 
 /* Reset et styles globaux */
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
 /* Header principal - Forcer les styles */
@@ -32,6 +31,13 @@ body {
   background-color: var(--primary-color) !important;
   color: var(--text-light) !important;
   padding: 0.25rem 1rem !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.top-navbar .container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
 }
 
 .d-header-icons .d-icon,
@@ -58,7 +64,9 @@ body {
 .btn-primary,
 .btn.btn-primary,
 .btn.btn.btn-primary,
-body .btn-primary {
+body .btn-primary,
+.d-editor-button-bar button.btn-primary,
+body button.btn-primary {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
   color: var(--text-light) !important;
@@ -69,7 +77,9 @@ body .btn-primary {
 .btn-primary:hover,
 .btn.btn-primary:hover,
 .btn.btn.btn-primary:hover,
-body .btn-primary:hover {
+body .btn-primary:hover,
+.d-editor-button-bar button.btn-primary:hover,
+body button.btn-primary:hover {
   background-color: var(--primary-hover) !important;
   border-color: var(--primary-hover) !important;
 }
@@ -78,7 +88,9 @@ body .btn-primary:hover {
 .btn-default,
 .btn.btn-default,
 .btn.btn-flat.btn-text,
-body .btn-default {
+body .btn-default,
+.d-editor-button-bar button.btn-default,
+body button.btn-default {
   background-color: #f3f4f6 !important;
   border-color: var(--border-light) !important;
   border-radius: 9999px !important;
@@ -88,7 +100,9 @@ body .btn-default {
 .btn-default:hover,
 .btn.btn-default:hover,
 .btn.btn-flat.btn-text:hover,
-body .btn-default:hover {
+body .btn-default:hover,
+.d-editor-button-bar button.btn-default:hover,
+body button.btn-default:hover {
   background-color: var(--border-light) !important;
   border-color: var(--border-hover) !important;
 }
@@ -202,6 +216,7 @@ img.avatar {
   padding: 1.5rem 1rem !important;
   text-align: center !important;
   margin-top: 2rem !important;
+  width: 100% !important;
 }
 
 .custom-footer .container {
@@ -217,6 +232,8 @@ img.avatar {
   display: flex !important;
   gap: 1.5rem !important;
   margin-bottom: 1rem !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
 }
 
 .custom-footer .footer-links a {
@@ -417,3 +434,16 @@ textarea:focus {
 }
 
 /* JavaScript pour ajouter un footer */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .custom-footer .footer-links {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+  
+  .top-navbar {
+    font-size: 0.875rem !important;
+  }
+}
