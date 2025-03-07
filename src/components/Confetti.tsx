@@ -5,10 +5,7 @@ interface ConfettiProps {
   isActive: boolean;
 }
 
-// Dollar bill image as a base64 string (green dollar bill)
-const dollarBillImage = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTAwIj48cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzg1QkI2NSIgcng9IjUiIHJ5PSI1Ii8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzAiIGZpbGw9IiM4NUJCNjUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMTIwIiB5PSI2MCIgZm9udC1zaXplPSI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzAwMCI+JDwvdGV4dD48L3N2Zz4=";
-
-// Define ConfettiPiece class to represent a single dollar bill
+// Define ConfettiPiece class to represent a single confetti piece
 class ConfettiPiece {
   x: number;
   y: number;
@@ -17,6 +14,7 @@ class ConfettiPiece {
   rotationSpeed: number;
   width: number;
   height: number;
+  color: string;
   gravity: number;
   oscillationAmplitude: number;
   oscillationX: number;
@@ -28,8 +26,9 @@ class ConfettiPiece {
     this.y = y;
     this.rotation = Math.random() * 360;
     this.rotationSpeed = Math.random() * 10 - 5;
-    this.width = Math.random() * 30 + 20; // Dollar bill width
-    this.height = this.width * 0.4; // Dollar bill proportions
+    this.width = Math.random() * 10 + 5;
+    this.height = Math.random() * 10 + 5;
+    this.color = this.getRandomColor();
     this.velocity = {
       x: Math.random() * 3 - 1.5,
       y: Math.random() * 3 + 2
@@ -39,6 +38,16 @@ class ConfettiPiece {
     this.oscillationX = 0;
     this.wobble = 0;
     this.wobbleSpeed = Math.random() * 0.1;
+  }
+  
+  getRandomColor() {
+    const colors = [
+      '#f44336', '#e91e63', '#9c27b0', '#673ab7', 
+      '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4',
+      '#009688', '#4caf50', '#8bc34a', '#cddc39', 
+      '#ffeb3b', '#ffc107', '#ff9800', '#ff5722'
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
   }
   
   update(deltaTime: number) {
@@ -62,19 +71,21 @@ class ConfettiPiece {
     this.rotationSpeed *= 0.99;
   }
   
-  draw(ctx: CanvasRenderingContext2D, dollarImage: HTMLImageElement) {
+  draw(ctx: CanvasRenderingContext2D) {
     const scale = window.devicePixelRatio || 1;
     ctx.save();
     
-    // Translate to the center of the dollar bill
+    // Translate to the center of the confetti piece
     ctx.translate((this.x + this.oscillationX) * scale, this.y * scale);
     
     // Rotate
     ctx.rotate(this.rotation * Math.PI / 180);
     
-    // Draw the dollar bill image
-    ctx.drawImage(
-      dollarImage,
+    // Set fill color
+    ctx.fillStyle = this.color;
+    
+    // Draw the confetti rectangle
+    ctx.fillRect(
       -this.width * scale / 2, 
       -this.height * scale / 2, 
       this.width * scale, 
@@ -87,22 +98,12 @@ class ConfettiPiece {
 
 const Confetti = ({ isActive }: ConfettiProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const dollarsRef = useRef<ConfettiPiece[]>([]);
+  const confettiRef = useRef<ConfettiPiece[]>([]);
   const animationFrameRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(Date.now());
-  const dollarImageRef = useRef<HTMLImageElement | null>(null);
-
-  // Initialize dollar bill image
-  useEffect(() => {
-    const img = new Image();
-    img.src = dollarBillImage;
-    img.onload = () => {
-      dollarImageRef.current = img;
-    };
-  }, []);
 
   useEffect(() => {
-    if (!isActive || !canvasRef.current || !dollarImageRef.current) return;
+    if (!isActive || !canvasRef.current) return;
     
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -122,16 +123,16 @@ const Confetti = ({ isActive }: ConfettiProps) => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
     
-    // Clear any previous dollars
+    // Clear any previous confetti
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
     }
     
-    dollarsRef.current = [];
+    confettiRef.current = [];
     lastTimeRef.current = Date.now();
     
-    // Create dollar bills
-    createDollars();
+    // Create confetti pieces
+    createConfetti();
     
     // Start animation
     animate();
@@ -144,22 +145,22 @@ const Confetti = ({ isActive }: ConfettiProps) => {
     };
   }, [isActive]);
   
-  const createDollars = () => {
+  const createConfetti = () => {
     if (!canvasRef.current) return;
     
-    const count = 100; // Fewer dollars for better performance
+    const count = 200;
     const canvas = canvasRef.current;
     
     for (let i = 0; i < count; i++) {
       const x = Math.random() * canvas.width;
       const y = Math.random() * canvas.height - canvas.height;
       
-      dollarsRef.current.push(new ConfettiPiece({ x, y }));
+      confettiRef.current.push(new ConfettiPiece({ x, y }));
     }
   };
   
   const animate = () => {
-    if (!canvasRef.current || !dollarImageRef.current) return;
+    if (!canvasRef.current) return;
     
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -171,15 +172,15 @@ const Confetti = ({ isActive }: ConfettiProps) => {
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Update and draw dollar bills
-    dollarsRef.current = dollarsRef.current.filter(dollar => {
-      dollar.update(delta / 16);
-      dollar.draw(ctx, dollarImageRef.current!);
-      return dollar.y < canvas.height + 100;
+    // Update and draw confetti pieces
+    confettiRef.current = confettiRef.current.filter(confetti => {
+      confetti.update(delta / 16);
+      confetti.draw(ctx);
+      return confetti.y < canvas.height + 100;
     });
     
-    // Continue animation if there's still dollars falling
-    if (dollarsRef.current.length > 0) {
+    // Continue animation if there's still confetti falling
+    if (confettiRef.current.length > 0) {
       animationFrameRef.current = requestAnimationFrame(animate);
     } else {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
