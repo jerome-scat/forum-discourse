@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Tag as TagIcon } from 'lucide-react';
 
@@ -22,12 +21,12 @@ const categories = [
 ];
 
 const tags = [
-  { id: 1, name: "Amazon FBA", color: "blue" },
-  { id: 2, name: "Amazon FBM", color: "green" },
-  { id: 3, name: "Seller Central", color: "amber" },
-  { id: 4, name: "PPC", color: "purple" },
-  { id: 5, name: "Helium10", color: "pink" },
-  { id: 6, name: "Retail Arbitrage", color: "cyan" },
+  { id: 1, name: "Amazon FBA", count: 48 },
+  { id: 2, name: "Amazon FBM", count: 32 },
+  { id: 3, name: "Seller Central", count: 65 },
+  { id: 4, name: "PPC", count: 27 },
+  { id: 5, name: "Helium10", count: 19 },
+  { id: 6, name: "Retail Arbitrage", count: 12 },
 ];
 
 const CategoryItem = ({ category }: { category: any }) => {
@@ -65,31 +64,16 @@ const CategoryItem = ({ category }: { category: any }) => {
 };
 
 const TagItem = ({ tag }: { tag: any }) => {
-  const getColorClass = (color: string) => {
-    const colorMap: Record<string, string> = {
-      blue: "bg-blue-100 text-blue-800",
-      green: "bg-green-100 text-green-800",
-      amber: "bg-amber-100 text-amber-800",
-      purple: "bg-purple-100 text-purple-800",
-      red: "bg-red-100 text-red-800",
-      gray: "bg-gray-100 text-gray-800",
-      indigo: "bg-indigo-100 text-indigo-800",
-      emerald: "bg-emerald-100 text-emerald-800",
-      orange: "bg-orange-100 text-orange-800",
-      pink: "bg-pink-100 text-pink-800",
-      rose: "bg-rose-100 text-rose-800",
-      cyan: "bg-cyan-100 text-cyan-800",
-      teal: "bg-teal-100 text-teal-800",
-      yellow: "bg-yellow-100 text-yellow-800",
-    };
-    return colorMap[tag.color] || colorMap.gray;
+  const getTagSize = (count: number) => {
+    if (count > 50) return 'text-lg font-medium';
+    if (count > 30) return 'text-base font-medium';
+    if (count > 20) return 'text-sm';
+    return 'text-xs';
   };
 
   return (
-    <a href="#" className="inline-block px-2 py-1 m-1 rounded-lg hover:bg-gray-50">
-      <span className={`text-xs px-2 py-0.5 rounded-full ${getColorClass(tag.color)}`}>
-        {tag.name}
-      </span>
+    <a href="#" className={`inline-block px-2 py-1 m-1 hover:text-[#edb067] transition-colors ${getTagSize(tag.count)}`}>
+      {tag.name}
     </a>
   );
 };
@@ -117,7 +101,7 @@ const Sidebar = () => {
           <TagIcon size={16} />
           Tags
         </h3>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center text-gray-700">
           {tags.map(tag => (
             <TagItem key={tag.id} tag={tag} />
           ))}

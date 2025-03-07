@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Avatar } from '@/components/ui/avatar';
-import { MessageCircle, Eye, Clock, Tag as TagIcon } from 'lucide-react';
+import { MessageCircle, Eye, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const categories = [
@@ -16,7 +15,6 @@ const categories = [
   { id: 9, name: "SEO", count: 59, color: "indigo", emoji: "🔗" },
 ];
 
-// Liste des tags disponibles
 const availableTags = [
   { id: 1, name: "Amazon FBA", color: "sky" },
   { id: 2, name: "Amazon FBM", color: "rose" },
@@ -219,24 +217,6 @@ const ThreadCard = ({ thread }: { thread: any }) => {
               {thread.category.name}
             </span>
           </div>
-          
-          {/* Affichage des tags */}
-          {thread.tags && thread.tags.length > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5 mb-2">
-              <span className="text-xs text-gray-500 flex items-center">
-                <TagIcon size={12} className="mr-1" />
-                Tags:
-              </span>
-              {thread.tags.map((tag: any, index: number) => (
-                <span 
-                  key={index} 
-                  className={`px-2 py-0.5 text-xs rounded-full ${getCategoryColorClass(tag.color)} inline-flex items-center`}
-                >
-                  {tag.name}
-                </span>
-              ))}
-            </div>
-          )}
           
           <p className="text-gray-600 text-sm mb-3">{thread.excerpt}</p>
           <div className="flex items-center text-gray-500 text-sm">
