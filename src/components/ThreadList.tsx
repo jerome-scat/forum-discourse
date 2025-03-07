@@ -110,7 +110,7 @@ const ThreadCard = ({ thread }: { thread: any }) => {
           <h3 className="text-lg font-medium text-gray-900 mb-1">{thread.title}</h3>
           <div className="flex items-center space-x-2 mb-2">
             <span className="px-2 py-0.5 bg-blue-100 text-blue-800 text-xs rounded-full">{thread.category}</span>
-            <span className="text-gray-500 text-sm">{thread.date}</span>
+            <span className="text-gray-500 text-sm">Discussion créée {thread.date.toLowerCase()}</span>
           </div>
           <p className="text-gray-600 text-sm mb-3">{thread.excerpt}</p>
           <div className="flex items-center text-gray-500 text-sm">
