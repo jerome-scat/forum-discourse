@@ -43,19 +43,16 @@ const CategoryItem = ({ category }: { category: any }) => {
   };
 
   return (
-    <a href="#" className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-50 group">
-      <span className="font-medium flex items-center gap-2">
+    <a href="#" className="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-gray-50">
+      <span className="text-xs font-medium flex items-center gap-2">
         <span className={`text-${category.color}-600`}>
           {category.icon}
         </span>
         {category.name}
       </span>
-      <div className="flex items-center">
-        <span className={`text-xs px-2 py-1 rounded-full ${getColorClass(category.color)}`}>
-          {category.count}
-        </span>
-        <ChevronRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity text-gray-400" />
-      </div>
+      <span className={`text-xs px-2 py-0.5 rounded-full ${getColorClass(category.color)}`}>
+        {category.count}
+      </span>
     </a>
   );
 };

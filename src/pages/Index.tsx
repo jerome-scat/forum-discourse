@@ -13,7 +13,7 @@ const Index = () => {
       
       <div className="container mx-auto px-4 py-6 flex-grow">
         <div className="flex flex-col md:flex-row gap-6">
-          <div className="w-full md:w-64 order-2 md:order-1">
+          <div className="md:w-80 lg:w-96 order-2 md:order-1">
             <Sidebar />
           </div>
           <div className="flex-grow order-1 md:order-2">
