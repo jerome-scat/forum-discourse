@@ -62,9 +62,18 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const startAuthTimeout = () => {
     if (!isAuthenticated) {
+      console.log('Starting auth timeout - modal will show in 10 seconds');
+      
+      // Clear any existing timeout first to avoid multiple timers
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+      
       const id = window.setTimeout(() => {
+        console.log('Timeout complete - showing auth modal');
         setShowAuthModal(true);
-      }, 10000); // 10 seconds
+      }, 10000); // 10 seconds (10000ms)
+      
       setTimeoutId(id);
     }
   };
@@ -75,6 +84,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     if (storedAuth === 'true') {
       setIsAuthenticated(true);
     } else {
+      console.log('User not authenticated - preparing to show modal');
       // Start timeout to show modal for non-authenticated users
       startAuthTimeout();
     }
@@ -82,6 +92,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     // Cleanup
     return () => {
       if (timeoutId) {
+        console.log('Cleaning up timeout');
         window.clearTimeout(timeoutId);
       }
     };
