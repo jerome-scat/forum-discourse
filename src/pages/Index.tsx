@@ -4,14 +4,30 @@ import Navbar from '@/components/Navbar';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 import ThreadList from '@/components/ThreadList';
+import AuthBlockModal from '@/components/AuthBlockModal';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Index = () => {
+  const { isAuthenticated, login, showAuthModal, setShowAuthModal } = useAuth();
+  
   // Function to handle contact link click
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     
     // Redirect to discourse direct message URL
     window.location.href = 'https://community.cockpitlab.com/new-message?username=Jerome';
+  };
+
+  const handleLoginClick = () => {
+    login();
+  };
+
+  const handleRegisterClick = () => {
+    login(); // For now, both login and register just authenticate the user
+  };
+
+  const handleCloseModal = () => {
+    setShowAuthModal(false);
   };
 
   return (
@@ -44,6 +60,14 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Modal de blocage d'accès */}
+      <AuthBlockModal 
+        isOpen={!isAuthenticated && showAuthModal}
+        onClose={handleCloseModal}
+        onLogin={handleLoginClick}
+        onRegister={handleRegisterClick}
+      />
     </div>
   );
 };
