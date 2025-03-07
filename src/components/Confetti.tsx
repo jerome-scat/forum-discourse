@@ -27,27 +27,34 @@ const Confetti = ({ isActive }: ConfettiProps) => {
       angle: number;
       rotation: number;
       rotationSpeed: number;
+      oscillationSpeed: number;
+      oscillationDistance: number;
+      oscillationX: number;
     }[] = [];
     
-    // Colors for confetti
-    const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', 
-                   '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50', 
-                   '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722'];
+    // Vibrant colors for confetti like in the CodePen example
+    const colors = [
+      '#9b87f5', '#7E69AB', '#D946EF', '#D6BCFA', '#8B5CF6', '#E5DEFF', 
+      '#FFDEE2', '#1EAEDB', '#33C3F0', '#0FA0CE'
+    ];
     
     // Create particles
     const createParticles = () => {
-      const particleCount = 200;
+      const particleCount = 150;
       
       for (let i = 0; i < particleCount; i++) {
         particles.push({
-          x: canvas.width / 2,
-          y: canvas.height / 2,
-          size: Math.random() * 10 + 5,
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height * 0.5 - canvas.height * 0.5, // Start above the screen
+          size: Math.random() * 12 + 5,
           color: colors[Math.floor(Math.random() * colors.length)],
-          speed: Math.random() * 15 + 5,
+          speed: Math.random() * 3 + 2,
           angle: Math.random() * Math.PI * 2,
-          rotation: 0,
-          rotationSpeed: Math.random() * 0.2 - 0.1
+          rotation: Math.random() * Math.PI * 2,
+          rotationSpeed: Math.random() * 0.2 - 0.1,
+          oscillationSpeed: Math.random() * 0.1 + 0.05,
+          oscillationDistance: Math.random() * 40 + 20,
+          oscillationX: 0
         });
       }
     };
@@ -56,18 +63,26 @@ const Confetti = ({ isActive }: ConfettiProps) => {
     const updateParticles = () => {
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
-        p.x += Math.cos(p.angle) * p.speed;
-        p.y += Math.sin(p.angle) * p.speed + 0.5; // Add gravity
+        
+        // Update oscillation
+        p.oscillationX += p.oscillationSpeed;
+        const wiggle = Math.sin(p.oscillationX) * p.oscillationDistance;
+        
+        // Move with oscillation
+        p.x += wiggle;
+        p.y += p.speed;
         p.rotation += p.rotationSpeed;
         
-        // Slow down particles
-        p.speed *= 0.99;
-        
-        // Remove particles that are out of bounds or have stopped
-        if (p.y > canvas.height || p.speed < 0.5) {
+        // Remove particles that are out of bounds
+        if (p.y > canvas.height) {
           particles.splice(i, 1);
           i--;
         }
+      }
+      
+      // Create more particles if all are gone
+      if (particles.length === 0) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
     };
     
@@ -81,7 +96,10 @@ const Confetti = ({ isActive }: ConfettiProps) => {
         ctx.translate(p.x, p.y);
         ctx.rotate(p.rotation);
         ctx.fillStyle = p.color;
-        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        
+        // Draw rectangular confetti pieces like in the CodePen example
+        ctx.fillRect(-p.size / 2, -p.size / 6, p.size, p.size / 3);
+        
         ctx.restore();
       }
     };
