@@ -1,15 +1,24 @@
 
 import React from 'react';
-import { Gauge, GraduationCap, HelpCircle, Hand, MessagesSquare, Sparkles, Goal, ArrowRight } from 'lucide-react';
+import { Package, BarChart, Ship, BookOpen, Shirt, Code, ShoppingBag, Flag, Link, Store, Terminal } from 'lucide-react';
 
 const categories = [
-  { id: 1, name: "Flight Sim News", count: 27, color: "blue", icon: <Gauge className="w-4 h-4" /> },
-  { id: 2, name: "Cockpit Building", count: 81, color: "green", icon: <GraduationCap className="w-4 h-4" /> },
-  { id: 3, name: "Support", count: 63, color: "red", icon: <HelpCircle className="w-4 h-4" /> },
-  { id: 4, name: "Marketplace", count: 14, color: "amber", icon: <Hand className="w-4 h-4" /> },
-  { id: 5, name: "Community", count: 42, color: "purple", icon: <MessagesSquare className="w-4 h-4" /> },
-  { id: 6, name: "Suggestions", count: 19, color: "indigo", icon: <Sparkles className="w-4 h-4" /> },
-  { id: 7, name: "User Gallery", count: 35, color: "emerald", icon: <Goal className="w-4 h-4" /> },
+  { id: 1, name: "Vendre sur Amazon", count: 86, color: "amber", icon: <Package className="w-4 h-4" /> },
+  { id: 2, name: "Comptabilité / Facturation", count: 42, color: "blue", icon: <BarChart className="w-4 h-4" /> },
+  { id: 3, name: "Import / Export", count: 38, color: "emerald", icon: <Ship className="w-4 h-4" /> },
+  { id: 4, name: "Amazon KDP", count: 54, color: "orange", icon: <BookOpen className="w-4 h-4" /> },
+  { id: 5, name: "Amazon Merch On Demand", count: 47, color: "pink", icon: <Shirt className="w-4 h-4" /> },
+  { id: 6, name: "WordPress", count: 29, color: "blue", icon: <Code className="w-4 h-4" /> },
+  { id: 7, name: "Shopify", count: 64, color: "green", icon: <ShoppingBag className="w-4 h-4" /> },
+  { id: 8, name: "Growth Hacking", count: 33, color: "purple", icon: <Flag className="w-4 h-4" /> },
+  { id: 9, name: "SEO", count: 59, color: "indigo", icon: <Link className="w-4 h-4" /> },
+  { id: 10, name: "Vendre sur Rakuten", count: 18, color: "red", icon: <Store className="w-4 h-4" /> },
+  { id: 11, name: "Vendre sur LaRedoute", count: 15, color: "rose", icon: <Store className="w-4 h-4" /> },
+  { id: 12, name: "Vendre sur ManoMano", count: 21, color: "cyan", icon: <Store className="w-4 h-4" /> },
+  { id: 13, name: "Vendre sur BackMarket", count: 16, color: "teal", icon: <Store className="w-4 h-4" /> },
+  { id: 14, name: "Vendre sur Fnac", count: 23, color: "yellow", icon: <Store className="w-4 h-4" /> },
+  { id: 15, name: "Vendre sur Cdiscount", count: 27, color: "blue", icon: <Store className="w-4 h-4" /> },
+  { id: 16, name: "Amazon MWS-SP API (Développeur)", count: 31, color: "gray", icon: <Terminal className="w-4 h-4" /> },
 ];
 
 const CategoryItem = ({ category }: { category: any }) => {
@@ -23,6 +32,12 @@ const CategoryItem = ({ category }: { category: any }) => {
       gray: "bg-gray-100 text-gray-800",
       indigo: "bg-indigo-100 text-indigo-800",
       emerald: "bg-emerald-100 text-emerald-800",
+      orange: "bg-orange-100 text-orange-800",
+      pink: "bg-pink-100 text-pink-800",
+      rose: "bg-rose-100 text-rose-800",
+      cyan: "bg-cyan-100 text-cyan-800",
+      teal: "bg-teal-100 text-teal-800",
+      yellow: "bg-yellow-100 text-yellow-800",
     };
     return colorMap[color] || colorMap.gray;
   };
@@ -56,7 +71,7 @@ const Sidebar = () => {
       
       <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100">
         <h3 className="font-medium text-gray-900 mb-3">Catégories</h3>
-        <div className="space-y-1">
+        <div className="space-y-1 max-h-[60vh] overflow-y-auto pr-1">
           {categories.map(category => (
             <CategoryItem key={category.id} category={category} />
           ))}
