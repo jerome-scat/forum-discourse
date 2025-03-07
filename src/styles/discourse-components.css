@@ -1,0 +1,79 @@
+
+/* CockpitLab Discourse Theme - Discourse Components */
+
+.topic-body {
+  border-top: 1px solid var(--border-color) !important;
+  padding-top: 1rem !important;
+}
+
+.topic-avatar {
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+
+.user-card {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+}
+
+.user-card .card-content {
+  padding: 16px !important;
+}
+
+.user-card .names span {
+  color: var(--text-color) !important;
+}
+
+.menu-panel {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+}
+
+.menu-panel li a {
+  padding: 8px 16px !important;
+}
+
+.menu-panel li a:hover {
+  background-color: rgba(237, 176, 103, 0.1) !important;
+}
+
+/* Styles spécifiques pour les composants Discourse */
+.topic-list-item .main-link a.title,
+.latest-topic-list-item .main-link a.title {
+  color: var(--text-color) !important;
+  font-weight: 500 !important;
+}
+
+.topic-list-item .main-link a.title:hover,
+.latest-topic-list-item .main-link a.title:hover {
+  color: var(--primary) !important;
+}
+
+.badge-wrapper {
+  background-color: #f1f1f1 !important;
+  border-radius: 4px !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+.badge-wrapper:hover {
+  background-color: #e5e5e5 !important;
+}
+
+.badge-wrapper .badge-category-bg {
+  border-radius: 2px !important;
+}
+
+/* Style des cartes */
+.topic-list .topic-list-item td {
+  padding: 12px 5px !important;
+}
+
+.topic-list .topic-list-item {
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.topic-list .topic-list-item:hover {
+  background-color: rgba(237, 176, 103, 0.05) !important;
+}

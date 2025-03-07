@@ -1,0 +1,12 @@
+
+/* CockpitLab Discourse Theme - Main CSS file */
+
+/* Import all modular CSS files */
+@import './variables.css';
+@import './global.css';
+@import './topnav.css';
+@import './buttons.css';
+@import './footer.css';
+@import './discourse-components.css';
+@import './forms.css';
+@import './responsive.css';

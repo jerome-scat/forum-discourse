@@ -1,0 +1,23 @@
+
+/* CockpitLab Discourse Theme - Responsive Styles */
+
+/* Styles responsifs */
+@media (max-width: 768px) {
+  .cockpitlab-topnav-container,
+  .cockpitlab-footer-top {
+    flex-direction: column !important;
+  }
+  
+  .cockpitlab-footer-section {
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Visibilité assurée */
+.cockpitlab-topnav,
+.cockpitlab-footer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
