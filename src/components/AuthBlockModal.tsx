@@ -13,7 +13,7 @@ interface AuthBlockModalProps {
 const AuthBlockModal = ({ isOpen, onClose, onLogin, onRegister }: AuthBlockModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={() => {/* Prevent closing by clicking outside or pressing escape */}}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md close-button-hidden">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-center">Accès limité</DialogTitle>
           <DialogDescription className="text-center pt-4">

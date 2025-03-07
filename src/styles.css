@@ -1,0 +1,5 @@
+
+/* Styles pour cacher le bouton de fermeture dans le modal d'authentification */
+.close-button-hidden [data-radix-collection-item] {
+  display: none !important;
+}
