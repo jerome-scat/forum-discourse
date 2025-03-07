@@ -8,9 +8,6 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-// Style global pour cacher le bouton de fermeture dans le modal d'authentification
-import "./styles.css";
-
 const queryClient = new QueryClient();
 
 const App = () => (
