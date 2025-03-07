@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Package, BarChart, Ship, BookOpen, Shirt, Code, ShoppingBag, Flag, Link, Store, Terminal } from 'lucide-react';
+import { Package, BarChart, Ship, BookOpen, Shirt, Code, ShoppingBag, Flag, Link, Store, Terminal, ChevronRight } from 'lucide-react';
 
 const categories = [
   { id: 1, name: "Vendre sur Amazon", count: 86, color: "amber", icon: <Package className="w-4 h-4" /> },
@@ -54,7 +54,7 @@ const CategoryItem = ({ category }: { category: any }) => {
         <span className={`text-xs px-2 py-1 rounded-full ${getColorClass(category.color)}`}>
           {category.count}
         </span>
-        <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity text-gray-400" />
+        <ChevronRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity text-gray-400" />
       </div>
     </a>
   );
