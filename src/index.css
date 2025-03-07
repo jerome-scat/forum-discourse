@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,7 +76,18 @@
     @apply bg-white rounded-xl shadow-sm p-4 mb-4 border border-gray-100;
   }
   
-  .navbar .group:hover > div {
-    display: block;
+  /* Dropdown menu styles */
+  .dropdown-container {
+    position: relative;
+  }
+  
+  .dropdown-container button:hover + .dropdown-menu,
+  .dropdown-menu:hover {
+    display: block !important;
+  }
+  
+  .dropdown-menu {
+    min-width: 10rem;
+    z-index: 50;
   }
 }
