@@ -5,6 +5,7 @@ export default {
   name: "discourse-theme-components",
   initialize() {
     withPluginApi("0.8.31", (api) => {
+      // Make sure the custom elements are added after the page loads
       api.onPageChange(() => {
         // Add custom footer to the page
         const footerHTML = `

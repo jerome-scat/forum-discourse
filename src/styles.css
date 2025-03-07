@@ -1,3 +1,4 @@
+
 /* Styles pour le thème CockpitLab Discourse */
 
 /* Variables de couleurs */
@@ -33,6 +34,9 @@ body {
   padding: 0.25rem 1rem !important;
   text-align: center !important;
   width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 1000 !important;
 }
 
 .top-navbar .container {
@@ -217,6 +221,9 @@ img.avatar {
   text-align: center !important;
   margin-top: 2rem !important;
   width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 100 !important;
 }
 
 .custom-footer .container {
@@ -355,6 +362,7 @@ textarea:focus {
 .custom-footer-container {
   width: 100% !important;
   margin-top: 2rem !important;
+  display: block !important;
 }
 
 /* Ajustement pour les forums en pleine largeur */
@@ -433,8 +441,6 @@ textarea:focus {
   color: white !important;
 }
 
-/* JavaScript pour ajouter un footer */
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .custom-footer .footer-links {
@@ -446,4 +452,53 @@ textarea:focus {
   .top-navbar {
     font-size: 0.875rem !important;
   }
+}
+
+/* Force color de la navbar à notre orange (#edb067) */
+.d-header {
+  border-bottom: 2px solid var(--primary-color) !important;
+}
+
+/* Force couleur des liens et boutons interactifs */
+.btn.btn-primary,
+.btn-primary,
+.btn.btn.btn-primary,
+.nav-pills > li.active > a,
+.nav-pills > li > a.active {
+  background-color: #edb067 !important;
+  border-color: #edb067 !important;
+}
+
+.btn.btn-primary:hover,
+.btn-primary:hover,
+.btn.btn.btn-primary:hover {
+  background-color: #e09d4e !important;
+  border-color: #e09d4e !important;
+}
+
+/* Renforcer l'application des couleurs principales */
+a, a.widget-link, a.mention, .link, .topic-title {
+  color: #edb067 !important;
+}
+
+a:hover, a.widget-link:hover, a.mention:hover, .link:hover, .topic-title:hover {
+  color: #e09d4e !important;
+}
+
+/* Ajout d'une bordure en bas du header */
+.d-header {
+  border-bottom: 3px solid #edb067 !important;
+}
+
+/* Force application des styles au footer et topbar */
+.top-navbar, .top-navbar-content {
+  background-color: #edb067 !important;
+  color: white !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.custom-footer, .custom-footer-container {
+  display: block !important;
+  width: 100% !important;
 }
