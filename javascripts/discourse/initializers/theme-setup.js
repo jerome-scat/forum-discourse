@@ -63,12 +63,19 @@ export default {
           </div>
         `;
 
-        // Create and insert the top navbar at the beginning of body
+        // Safely check if we need to add elements
         if (!document.querySelector('.top-navbar')) {
+          // Try different insertion points for the top navbar
+          const header = document.querySelector('header.d-header');
           const topNavbarContainer = document.createElement('div');
           topNavbarContainer.className = 'custom-header-container';
           topNavbarContainer.innerHTML = topNavHTML;
-          document.body.insertBefore(topNavbarContainer, document.body.firstChild);
+          
+          if (header && header.parentNode) {
+            header.parentNode.insertBefore(topNavbarContainer, header);
+          } else {
+            document.body.insertBefore(topNavbarContainer, document.body.firstChild);
+          }
         }
 
         // Create and insert the footer at the end of main outlet
@@ -77,24 +84,32 @@ export default {
           footerContainer.className = 'custom-footer-container';
           footerContainer.innerHTML = footerHTML;
           
-          // Try to insert before the footer, or at the end of body if no footer
+          // Try multiple insertion points for the footer
           const mainOutlet = document.querySelector('#main-outlet');
           if (mainOutlet) {
             mainOutlet.parentNode.insertBefore(footerContainer, mainOutlet.nextSibling);
           } else {
-            document.body.appendChild(footerContainer);
+            const footer = document.querySelector('footer');
+            if (footer) {
+              footer.parentNode.insertBefore(footerContainer, footer);
+            } else {
+              document.body.appendChild(footerContainer);
+            }
           }
         }
       };
 
-      // Add custom elements on page change
+      // Add custom elements on page change and on DOM content loaded
       api.onPageChange(() => {
-        // Delay slightly to ensure the DOM is ready
-        setTimeout(addCustomElements, 100);
+        // Delay to ensure DOM is fully loaded
+        setTimeout(addCustomElements, 500);
       });
 
-      // Also add on initial page load
-      addCustomElements();
+      // Also add on initial page load with multiple attempts
+      // This helps ensure it loads even if the DOM changes after initial load
+      setTimeout(addCustomElements, 500);
+      setTimeout(addCustomElements, 1000);
+      setTimeout(addCustomElements, 2000);
     });
   }
 };
