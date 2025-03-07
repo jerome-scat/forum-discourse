@@ -1,5 +1,8 @@
-import React from 'react';
-import { Tag as TagIcon } from 'lucide-react';
+
+import React, { useState } from 'react';
+import { Tag as TagIcon, PlusCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Confetti from '@/components/Confetti';
 
 const categories = [
   { id: 1, name: "Vendre sur Amazon", count: 86, color: "amber", emoji: "📦" },
@@ -79,12 +82,31 @@ const TagItem = ({ tag }: { tag: any }) => {
 };
 
 const Sidebar = () => {
+  const [showConfetti, setShowConfetti] = useState(false);
+  
+  const handleNewThread = () => {
+    // Simulate creating a new thread
+    console.log('New thread created!');
+    
+    // Show confetti
+    setShowConfetti(true);
+    
+    // Hide confetti after 3 seconds
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 3000);
+  };
+  
   return (
     <div className="w-full md:w-80 lg:w-96 md:pr-6">
       <div className="mb-6">
-        <button className="w-full btn btn-primary flex items-center justify-center">
+        <Button 
+          onClick={handleNewThread}
+          className="w-full bg-[#edb067] hover:bg-[#e09d4e] text-white flex items-center justify-center gap-2"
+        >
+          <PlusCircle size={18} />
           Nouvelle discussion
-        </button>
+        </Button>
       </div>
       
       <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100 mb-4">
@@ -125,6 +147,8 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
+      
+      <Confetti isActive={showConfetti} />
     </div>
   );
 };
