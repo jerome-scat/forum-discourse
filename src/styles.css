@@ -1,5 +1,7 @@
 
 /* Styles pour le thème CockpitLab Discourse */
+
+/* Header principal */
 .d-header {
   background-color: #0f172a;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -13,29 +15,73 @@
   color: white;
 }
 
+/* Logo */
+.d-header .title a img {
+  max-height: 40px;
+}
+
+/* Boutons principaux */
 .btn-primary {
-  background-color: #2563eb;
-  border-color: #2563eb;
+  background-color: #edb067;
+  border-color: #edb067;
 }
 
 .btn-primary:hover {
-  background-color: #1d4ed8;
-  border-color: #1d4ed8;
+  background-color: #e09d4e;
+  border-color: #e09d4e;
+}
+
+/* Boutons secondaires */
+.btn-default {
+  background-color: #f3f4f6;
+  border-color: #e5e7eb;
+}
+
+.btn-default:hover {
+  background-color: #e5e7eb;
+  border-color: #d1d5db;
 }
 
 /* Styles pour les catégories */
+.category-list tbody tr {
+  transition: background-color 0.2s;
+}
+
 .category-list tbody tr:hover {
   background-color: #f8fafc;
 }
 
 /* Styles pour les sujets */
+.topic-list .topic-list-item {
+  transition: background-color 0.2s;
+}
+
 .topic-list .topic-list-item:hover {
   background-color: #f8fafc;
 }
 
 /* Pour les textes avec accent de couleur */
-.accent-text {
-  color: #2563eb;
+.accent-text, a.mention {
+  color: #edb067;
+}
+
+/* Navigation */
+.nav-pills > li.active > a,
+.nav-pills > li > a.active {
+  background-color: #edb067;
+}
+
+.nav-pills > li > a:hover {
+  background-color: #f8fafc;
+}
+
+/* Footer */
+.footer-nav a {
+  color: #6b7280;
+}
+
+.footer-nav a:hover {
+  color: #edb067;
 }
 
 /* Pour le mode sombre */
@@ -46,4 +92,37 @@
 .discourse-dark-theme .category-list tbody tr:hover,
 .discourse-dark-theme .topic-list .topic-list-item:hover {
   background-color: #1e293b;
+}
+
+.discourse-dark-theme .btn-primary {
+  background-color: #edb067;
+  border-color: #edb067;
+}
+
+.discourse-dark-theme .btn-primary:hover {
+  background-color: #e09d4e;
+  border-color: #e09d4e;
+}
+
+/* Badges */
+.badge-wrapper {
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+/* Arrondir les avatars */
+.avatar {
+  border-radius: 50%;
+}
+
+/* Styliser les cartes des utilisateurs */
+.user-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Menus déroulants */
+.menu-panel {
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
