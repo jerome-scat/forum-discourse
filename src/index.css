@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -74,5 +73,9 @@
   
   .thread-card {
     @apply bg-white rounded-xl shadow-sm p-4 mb-4 border border-gray-100;
+  }
+  
+  .navbar .group:hover > div {
+    display: block;
   }
 }

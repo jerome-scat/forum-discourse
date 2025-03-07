@@ -11,7 +11,8 @@ const Navbar = () => {
     <div className="navbar flex items-center justify-between">
       <div className="flex items-center space-x-6">
         {/* Menu Aide */}
-        <div className="relative"
+        <div 
+          className="relative group"
           onMouseEnter={() => setHelpOpen(true)}
           onMouseLeave={() => setHelpOpen(false)}
         >
@@ -31,7 +32,8 @@ const Navbar = () => {
         </div>
         
         {/* Menu Nouveautés */}
-        <div className="relative"
+        <div 
+          className="relative group"
           onMouseEnter={() => setNewsOpen(true)}
           onMouseLeave={() => setNewsOpen(false)}
         >
@@ -50,7 +52,8 @@ const Navbar = () => {
         </div>
         
         {/* Menu Réseaux sociaux */}
-        <div className="relative"
+        <div 
+          className="relative group"
           onMouseEnter={() => setSocialOpen(true)}
           onMouseLeave={() => setSocialOpen(false)}
         >
