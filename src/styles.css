@@ -1,114 +1,117 @@
 
-/* CockpitLab Discourse Theme - Main Styles */
+/* CockpitLab Discourse Theme - Styles optimisés */
 
-/* Reset styles de base pour éviter les conflits */
-html.discourse {
-  --primary-color: #edb067 !important;
-  --primary-hover: #e09d4e !important;
-  --text-color: #333333 !important;
-  --bg-light: #f8f8f8 !important;
-  --border-color: #dddddd !important;
-  --footer-bg: #f2f2f2 !important;
-  --header-height: 60px !important;
+/* Réinitialisation des variables pour Discourse */
+:root {
+  --primary: #edb067;
+  --primary-hover: #e09d4e;
+  --text-color: #333333;
+  --bg-light: #f8f8f8;
+  --border-color: #dddddd;
+  --footer-bg: #f2f2f2;
+  --header-height: 60px;
 }
 
-/* Styles pour le header et la barre de navigation */
-html.discourse .d-header {
+/* Styles globaux */
+.discourse-application {
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Style spécifique pour le header Discourse */
+.d-header {
   background-color: white !important;
-  border-bottom: 3px solid #edb067 !important;
+  border-bottom: 3px solid var(--primary) !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
-html.discourse .d-header-icons .icon {
-  color: #333333 !important;
+.d-header-icons .d-icon {
+  color: var(--text-color) !important;
 }
 
-html.discourse .d-header-icons .icon:hover {
-  color: #edb067 !important;
+.d-header-icons .d-icon:hover {
+  color: var(--primary) !important;
 }
 
-/* Style pour la barre de navigation tout en haut */
-html.discourse .top-navbar {
-  background-color: #edb067 !important;
+/* Barre de navigation supérieure personnalisée */
+.cockpitlab-topnav {
+  background-color: var(--primary) !important;
   color: white !important;
   font-size: 14px !important;
-  height: auto !important;
   padding: 0.25rem 1rem !important;
   text-align: center !important;
   width: 100% !important;
-  display: block !important;
+  display: flex !important;
+  justify-content: center !important;
   position: relative !important;
   z-index: 1000 !important;
 }
 
-html.discourse .top-navbar .container {
+.cockpitlab-topnav-container {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
   max-width: 1200px !important;
+  width: 100% !important;
   margin: 0 auto !important;
   padding: 0 15px !important;
 }
 
-html.discourse .top-navbar a {
+.cockpitlab-topnav a {
   color: white !important;
   text-decoration: none !important;
   margin: 0 10px !important;
   font-weight: 500 !important;
 }
 
-html.discourse .top-navbar a:hover {
+.cockpitlab-topnav a:hover {
   text-decoration: underline !important;
 }
 
-/* Styles des boutons et liens */
-html.discourse .btn.btn-primary,
-html.discourse .btn-primary,
-html.discourse .btn.btn.btn-primary {
-  background-color: #edb067 !important;
-  border-color: #edb067 !important;
+/* Boutons et liens */
+.btn-primary,
+.btn.btn-primary,
+.btn.btn.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
   color: white !important;
 }
 
-html.discourse .btn.btn-primary:hover,
-html.discourse .btn-primary:hover,
-html.discourse .btn.btn.btn-primary:hover {
-  background-color: #e09d4e !important;
-  border-color: #e09d4e !important;
+.btn-primary:hover,
+.btn.btn-primary:hover,
+.btn.btn.btn-primary:hover {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
 }
 
-html.discourse a, 
-html.discourse a.widget-link, 
-html.discourse a.mention, 
-html.discourse .link, 
-html.discourse .topic-title {
-  color: #edb067 !important;
+.discourse-application a,
+.topic-title,
+.topic-list-item.visited a.title:visited,
+.latest-topic-list-item.visited a.title:visited {
+  color: var(--primary) !important;
 }
 
-html.discourse a:hover, 
-html.discourse a.widget-link:hover, 
-html.discourse a.mention:hover, 
-html.discourse .link:hover, 
-html.discourse .topic-title:hover {
-  color: #e09d4e !important;
+.discourse-application a:hover,
+.topic-title:hover {
+  color: var(--primary-hover) !important;
 }
 
 /* Navigation Pills */
-html.discourse .nav-pills > li.active > a,
-html.discourse .nav-pills > li > a.active {
-  background-color: #edb067 !important;
+.nav-pills > li.active > a,
+.nav-pills > li > a.active {
+  background-color: var(--primary) !important;
   color: white !important;
 }
 
-html.discourse .nav-pills > li > a:hover {
-  background-color: #e09d4e !important;
+.nav-pills > li > a:hover {
+  background-color: var(--primary-hover) !important;
   color: white !important;
 }
 
 /* Footer personnalisé */
-html.discourse .custom-footer {
-  background-color: #f2f2f2 !important;
-  color: #333333 !important;
+.cockpitlab-footer {
+  background-color: var(--footer-bg) !important;
+  color: var(--text-color) !important;
   padding: 2rem 1rem !important;
   text-align: center !important;
   margin-top: 2rem !important;
@@ -118,102 +121,200 @@ html.discourse .custom-footer {
   z-index: 100 !important;
 }
 
-html.discourse .custom-footer .container {
+.cockpitlab-footer-container {
   display: flex !important;
   flex-direction: column !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
 }
 
-html.discourse .footer-top {
+.cockpitlab-footer-top {
   display: flex !important;
   justify-content: space-between !important;
   margin-bottom: 2rem !important;
   flex-wrap: wrap !important;
 }
 
-html.discourse .footer-section {
+.cockpitlab-footer-section {
   flex: 1 !important;
   min-width: 200px !important;
   margin-bottom: 1.5rem !important;
   text-align: left !important;
 }
 
-html.discourse .footer-section h4 {
-  color: #333333 !important;
+.cockpitlab-footer-section h4 {
+  color: var(--text-color) !important;
   font-size: 18px !important;
   margin-bottom: 1rem !important;
   font-weight: 600 !important;
 }
 
-html.discourse .footer-section ul {
+.cockpitlab-footer-section ul {
   list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-html.discourse .footer-section ul li {
+.cockpitlab-footer-section ul li {
   margin-bottom: 0.5rem !important;
 }
 
-html.discourse .footer-section a {
-  color: #333333 !important;
+.cockpitlab-footer-section a {
+  color: var(--text-color) !important;
   text-decoration: none !important;
 }
 
-html.discourse .footer-section a:hover {
-  color: #edb067 !important;
+.cockpitlab-footer-section a:hover {
+  color: var(--primary) !important;
 }
 
-html.discourse .footer-bottom {
-  border-top: 1px solid #dddddd !important;
+.cockpitlab-footer-bottom {
+  border-top: 1px solid var(--border-color) !important;
   padding-top: 1.5rem !important;
   text-align: center !important;
 }
 
-html.discourse .footer-logo {
+.cockpitlab-footer-logo {
   max-width: 150px !important;
   margin-bottom: 1rem !important;
 }
 
-html.discourse .footer-bottom p {
+.cockpitlab-footer-bottom p {
   margin: 0 !important;
   font-size: 14px !important;
   color: #666 !important;
 }
 
-html.discourse .social-links {
+.cockpitlab-social-links {
   display: flex !important;
   justify-content: center !important;
   margin: 1rem 0 !important;
 }
 
-html.discourse .social-links a {
+.cockpitlab-social-links a {
   margin: 0 10px !important;
   color: #666 !important;
 }
 
-html.discourse .social-links a:hover {
-  color: #edb067 !important;
+.cockpitlab-social-links a:hover {
+  color: var(--primary) !important;
 }
 
-/* Ajustements responsifs */
+/* Styles spécifiques pour les composants Discourse */
+.topic-list-item .main-link a.title,
+.latest-topic-list-item .main-link a.title {
+  color: var(--text-color) !important;
+  font-weight: 500 !important;
+}
+
+.topic-list-item .main-link a.title:hover,
+.latest-topic-list-item .main-link a.title:hover {
+  color: var(--primary) !important;
+}
+
+.badge-wrapper {
+  background-color: #f1f1f1 !important;
+  border-radius: 4px !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+.badge-wrapper:hover {
+  background-color: #e5e5e5 !important;
+}
+
+.badge-wrapper .badge-category-bg {
+  border-radius: 2px !important;
+}
+
+/* Style des cartes */
+.topic-list .topic-list-item td {
+  padding: 12px 5px !important;
+}
+
+.topic-list .topic-list-item {
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.topic-list .topic-list-item:hover {
+  background-color: rgba(237, 176, 103, 0.05) !important;
+}
+
+/* Formulaires et entrées */
+.d-editor-textarea-wrapper {
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+}
+
+.d-editor-textarea-wrapper:focus-within {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(237, 176, 103, 0.2) !important;
+}
+
+.select-kit-header {
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+}
+
+.select-kit-header:hover {
+  border-color: var(--primary) !important;
+}
+
+/* Styles responsifs */
 @media (max-width: 768px) {
-  html.discourse .top-navbar .container,
-  html.discourse .footer-top {
+  .cockpitlab-topnav-container,
+  .cockpitlab-footer-top {
     flex-direction: column !important;
   }
   
-  html.discourse .footer-section {
+  .cockpitlab-footer-section {
     width: 100% !important;
     margin-bottom: 1.5rem !important;
   }
 }
 
-/* S'assurer que les éléments sont toujours visibles */
-html.discourse body .top-navbar,
-html.discourse body .custom-footer {
+/* Visibilité assurée */
+.cockpitlab-topnav,
+.cockpitlab-footer {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+/* Styles supplémentaires pour assurer la compatibilité avec Discourse */
+.topic-body {
+  border-top: 1px solid var(--border-color) !important;
+  padding-top: 1rem !important;
+}
+
+.topic-avatar {
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+
+.user-card {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+}
+
+.user-card .card-content {
+  padding: 16px !important;
+}
+
+.user-card .names span {
+  color: var(--text-color) !important;
+}
+
+.menu-panel {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+}
+
+.menu-panel li a {
+  padding: 8px 16px !important;
+}
+
+.menu-panel li a:hover {
+  background-color: rgba(237, 176, 103, 0.1) !important;
 }
