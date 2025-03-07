@@ -12,7 +12,7 @@ const Index = () => {
       <Header />
       
       <div className="container mx-auto px-4 py-6 flex-grow">
-        <div className="flex flex-col md:flex-row gap-2">
+        <div className="flex flex-col md:flex-row gap-0">
           <div className="md:w-80 lg:w-96 order-2 md:order-1">
             <Sidebar />
           </div>
