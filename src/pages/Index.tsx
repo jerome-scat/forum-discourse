@@ -12,9 +12,11 @@ const Index = () => {
       <Header />
       
       <div className="container mx-auto px-4 py-6 flex-grow">
-        <div className="flex gap-6">
-          <Sidebar />
-          <div className="flex-grow">
+        <div className="flex flex-col md:flex-row gap-6">
+          <div className="w-full md:w-64 order-2 md:order-1">
+            <Sidebar />
+          </div>
+          <div className="flex-grow order-1 md:order-2">
             <ThreadList />
           </div>
         </div>
@@ -22,11 +24,11 @@ const Index = () => {
       
       <footer className="bg-white border-t border-gray-200 py-6">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div>
               <p className="text-gray-600 text-sm">© 2023 CockpitLab. Tous droits réservés.</p>
             </div>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap justify-center gap-4 md:space-x-4">
               <a href="#" className="text-gray-600 hover:text-gray-900 text-sm">Conditions d'utilisation</a>
               <a href="#" className="text-gray-600 hover:text-gray-900 text-sm">Politique de confidentialité</a>
               <a href="#" className="text-gray-600 hover:text-gray-900 text-sm">Contact</a>

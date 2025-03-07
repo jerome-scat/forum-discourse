@@ -35,7 +35,7 @@ const CategoryItem = ({ category }: { category: any }) => {
 
 const Sidebar = () => {
   return (
-    <div className="w-64 pr-6">
+    <div className="w-full md:w-64 md:pr-6">
       <div className="mb-6">
         <button className="w-full btn btn-primary flex items-center justify-center">
           Nouvelle discussion
@@ -53,7 +53,7 @@ const Sidebar = () => {
       
       <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100 mt-4">
         <h3 className="font-medium text-gray-900 mb-3">Statistiques</h3>
-        <div className="space-y-2 text-sm text-gray-600">
+        <div className="grid grid-cols-2 md:block gap-2 text-sm text-gray-600">
           <div className="flex justify-between">
             <span>Membres:</span>
             <span className="font-medium">2,459</span>

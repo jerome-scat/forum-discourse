@@ -1,15 +1,17 @@
 
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [helpOpen, setHelpOpen] = useState(false);
   const [newsOpen, setNewsOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
     <div className="navbar flex items-center justify-between">
-      <div className="flex items-center space-x-6">
+      {/* Desktop menu */}
+      <div className="hidden md:flex items-center space-x-6">
         {/* Menu Aide */}
         <div className="relative dropdown-container">
           <button 
@@ -70,11 +72,40 @@ const Navbar = () => {
         </div>
       </div>
       
+      {/* Mobile menu button */}
+      <div className="md:hidden flex items-center">
+        <button onClick={() => setMobileNavOpen(!mobileNavOpen)} className="text-white">
+          {mobileNavOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+      
+      {/* Site link - shown on both mobile and desktop */}
       <div>
         <a href="#" className="text-white/80 hover:text-white text-sm">
           Retour au site principal
         </a>
       </div>
+      
+      {/* Mobile dropdown menu */}
+      {mobileNavOpen && (
+        <div className="absolute top-full left-0 right-0 bg-black/95 z-50 p-4 md:hidden">
+          <div className="flex flex-col space-y-4">
+            <div className="text-white/80 font-medium">Aide</div>
+            <a href="#" className="text-white/60 hover:text-white pl-2">Centre d'aide</a>
+            <a href="#" className="text-white/60 hover:text-white pl-2">FAQ</a>
+            <a href="#" className="text-white/60 hover:text-white pl-2">Contact</a>
+            
+            <div className="text-white/80 font-medium mt-4">Nouveautés</div>
+            <a href="#" className="text-white/60 hover:text-white pl-2">Dernières mises à jour</a>
+            <a href="#" className="text-white/60 hover:text-white pl-2">Roadmap</a>
+            
+            <div className="text-white/80 font-medium mt-4">Réseaux sociaux</div>
+            <a href="#" className="text-white/60 hover:text-white pl-2">Twitter</a>
+            <a href="#" className="text-white/60 hover:text-white pl-2">LinkedIn</a>
+            <a href="#" className="text-white/60 hover:text-white pl-2">Instagram</a>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
