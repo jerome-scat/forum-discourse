@@ -1,24 +1,23 @@
 
 import React from 'react';
-import { Package, BarChart, Ship, BookOpen, Shirt, Code, ShoppingBag, Flag, Link, Store, Terminal, ChevronRight } from 'lucide-react';
 
 const categories = [
-  { id: 1, name: "Vendre sur Amazon", count: 86, color: "amber", icon: <Package className="w-4 h-4" /> },
-  { id: 2, name: "Comptabilité / Facturation", count: 42, color: "blue", icon: <BarChart className="w-4 h-4" /> },
-  { id: 3, name: "Import / Export", count: 38, color: "emerald", icon: <Ship className="w-4 h-4" /> },
-  { id: 4, name: "Amazon KDP", count: 54, color: "orange", icon: <BookOpen className="w-4 h-4" /> },
-  { id: 5, name: "Amazon Merch On Demand", count: 47, color: "pink", icon: <Shirt className="w-4 h-4" /> },
-  { id: 6, name: "WordPress", count: 29, color: "blue", icon: <Code className="w-4 h-4" /> },
-  { id: 7, name: "Shopify", count: 64, color: "green", icon: <ShoppingBag className="w-4 h-4" /> },
-  { id: 8, name: "Growth Hacking", count: 33, color: "purple", icon: <Flag className="w-4 h-4" /> },
-  { id: 9, name: "SEO", count: 59, color: "indigo", icon: <Link className="w-4 h-4" /> },
-  { id: 10, name: "Vendre sur Rakuten", count: 18, color: "red", icon: <Store className="w-4 h-4" /> },
-  { id: 11, name: "Vendre sur LaRedoute", count: 15, color: "rose", icon: <Store className="w-4 h-4" /> },
-  { id: 12, name: "Vendre sur ManoMano", count: 21, color: "cyan", icon: <Store className="w-4 h-4" /> },
-  { id: 13, name: "Vendre sur BackMarket", count: 16, color: "teal", icon: <Store className="w-4 h-4" /> },
-  { id: 14, name: "Vendre sur Fnac", count: 23, color: "yellow", icon: <Store className="w-4 h-4" /> },
-  { id: 15, name: "Vendre sur Cdiscount", count: 27, color: "blue", icon: <Store className="w-4 h-4" /> },
-  { id: 16, name: "Amazon MWS-SP API (Développeur)", count: 31, color: "gray", icon: <Terminal className="w-4 h-4" /> },
+  { id: 1, name: "Vendre sur Amazon", count: 86, color: "amber", emoji: "📦" },
+  { id: 2, name: "Comptabilité / Facturation", count: 42, color: "blue", emoji: "📊" },
+  { id: 3, name: "Import / Export", count: 38, color: "emerald", emoji: "🚢" },
+  { id: 4, name: "Amazon KDP", count: 54, color: "orange", emoji: "📚" },
+  { id: 5, name: "Amazon Merch On Demand", count: 47, color: "pink", emoji: "👕" },
+  { id: 6, name: "WordPress", count: 29, color: "blue", emoji: "🌐" },
+  { id: 7, name: "Shopify", count: 64, color: "green", emoji: "🛍️" },
+  { id: 8, name: "Growth Hacking", count: 33, color: "purple", emoji: "🚀" },
+  { id: 9, name: "SEO", count: 59, color: "indigo", emoji: "🔗" },
+  { id: 10, name: "Vendre sur Rakuten", count: 18, color: "red", emoji: "🏪" },
+  { id: 11, name: "Vendre sur LaRedoute", count: 15, color: "rose", emoji: "🛒" },
+  { id: 12, name: "Vendre sur ManoMano", count: 21, color: "cyan", emoji: "🔨" },
+  { id: 13, name: "Vendre sur BackMarket", count: 16, color: "teal", emoji: "♻️" },
+  { id: 14, name: "Vendre sur Fnac", count: 23, color: "yellow", emoji: "📀" },
+  { id: 15, name: "Vendre sur Cdiscount", count: 27, color: "blue", emoji: "💼" },
+  { id: 16, name: "Amazon MWS-SP API (Développeur)", count: 31, color: "gray", emoji: "💻" },
 ];
 
 const CategoryItem = ({ category }: { category: any }) => {
@@ -45,9 +44,7 @@ const CategoryItem = ({ category }: { category: any }) => {
   return (
     <a href="#" className="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-gray-50">
       <span className="text-xs font-medium flex items-center gap-2">
-        <span className={`text-${category.color}-600`}>
-          {category.icon}
-        </span>
+        <span className="text-lg">{category.emoji}</span>
         {category.name}
       </span>
       <span className={`text-xs px-2 py-0.5 rounded-full ${getColorClass(category.color)}`}>
