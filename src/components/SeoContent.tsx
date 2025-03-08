@@ -16,14 +16,14 @@ const SeoContent = () => {
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
-        className="border border-gray-200 rounded-lg overflow-hidden"
+        className="rounded-lg overflow-hidden"
       >
         <CollapsibleTrigger asChild>
           <Button 
             variant="ghost" 
             className="w-full flex items-center justify-between rounded-none bg-gray-50 hover:bg-gray-100 py-4 px-6"
           >
-            <span className="font-medium text-gray-900">Contenu additionnel sur la vente en ligne</span>
+            <span className="font-medium text-gray-900">Guide complet pour vendre sur Amazon en 2023</span>
             {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
           </Button>
         </CollapsibleTrigger>
