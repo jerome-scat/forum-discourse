@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Header from '@/components/Header';
@@ -6,6 +7,7 @@ import ThreadList from '@/components/ThreadList';
 import AuthBlockModal from '@/components/AuthBlockModal';
 import { useAuth } from '@/contexts/AuthContext';
 import { Link } from 'react-router-dom';
+
 const Index = () => {
   const {
     isAuthenticated,
@@ -14,6 +16,9 @@ const Index = () => {
     setShowAuthModal
   } = useAuth();
 
+  // Current year for dynamic copyright
+  const currentYear = new Date().getFullYear();
+
   // Function to handle contact link click
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -21,15 +26,19 @@ const Index = () => {
     // Redirect to discourse direct message URL
     window.location.href = 'https://community.cockpitlab.com/new-message?username=Jerome';
   };
+
   const handleLoginClick = () => {
     login();
   };
+
   const handleRegisterClick = () => {
     login(); // For now, both login and register just authenticate the user
   };
+
   const handleCloseModal = () => {
     setShowAuthModal(false);
   };
+
   return <div className="min-h-screen flex flex-col bg-gray-50">
       <Navbar />
       <Header />
@@ -59,11 +68,9 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div>
-              <p className="text-gray-600 text-sm">© 2023 CockpitLab. Tous droits réservés.</p>
+              <p className="text-gray-600 text-sm">© 2015-{currentYear} CockpitLab. Tous droits réservés.</p>
             </div>
             <div className="flex flex-wrap justify-center gap-4 md:space-x-4">
-              <a href="#" className="text-gray-600 hover:text-gray-900 text-sm">Conditions d'utilisation</a>
-              <a href="#" className="text-gray-600 hover:text-gray-900 text-sm">Politique de confidentialité</a>
               <a href="#" onClick={handleContactClick} className="text-gray-600 hover:text-gray-900 text-sm">Contact</a>
             </div>
           </div>
@@ -74,4 +81,5 @@ const Index = () => {
       <AuthBlockModal isOpen={!isAuthenticated && showAuthModal} onClose={handleCloseModal} onLogin={handleLoginClick} onRegister={handleRegisterClick} />
     </div>;
 };
+
 export default Index;
