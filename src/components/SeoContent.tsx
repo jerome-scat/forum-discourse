@@ -3,7 +3,7 @@ import React from 'react';
 
 const SeoContent = () => {
   return (
-    <div className="mt-12 space-y-8 prose max-w-none">
+    <div className="mt-12 space-y-8 prose max-w-none text-center mx-auto px-4">
       <h2 className="text-2xl font-semibold text-gray-900">Guide complet pour vendre sur Amazon en 2023</h2>
       <div className="text-gray-700">
         <p>
