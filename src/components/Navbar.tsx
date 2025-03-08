@@ -76,6 +76,22 @@ const Navbar = () => {
             >
               Amazon Seller Central
             </a>
+            <a 
+              href="https://avask.com/fr/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              Avask
+            </a>
+            <a 
+              href="https://www.gs1.org/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              GS1
+            </a>
           </div>
         </div>
         
@@ -231,6 +247,22 @@ const Navbar = () => {
               className="text-white/60 hover:text-white pl-2"
             >
               Amazon Seller Central
+            </a>
+            <a 
+              href="https://avask.com/fr/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              Avask
+            </a>
+            <a 
+              href="https://www.gs1.org/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              GS1
             </a>
             
             <div className="text-white/80 font-medium mt-4">Formations</div>
