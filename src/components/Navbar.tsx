@@ -6,6 +6,7 @@ const Navbar = () => {
   const [linksOpen, setLinksOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
   const [formationsOpen, setFormationsOpen] = useState(false);
+  const [outilsOpen, setOutilsOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
@@ -75,14 +76,6 @@ const Navbar = () => {
             >
               Amazon Seller Central
             </a>
-            <a 
-              href="https://cc.helium10.com/?crsh_reqid=10748678&aid=3543&pg=1&coupon=COCKPITLAB20&PURL-067214&lang=fr" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="block px-4 py-2 hover:bg-gray-100"
-            >
-              Helium 10
-            </a>
           </div>
         </div>
         
@@ -123,6 +116,63 @@ const Navbar = () => {
               className="block px-4 py-2 hover:bg-gray-100"
             >
               Liberté Digitale
+            </a>
+          </div>
+        </div>
+        
+        {/* Menu Outils - New */}
+        <div className="relative dropdown-container">
+          <button 
+            className="flex items-center text-white/80 hover:text-white"
+            onMouseEnter={() => setOutilsOpen(true)}
+          >
+            Outils <ChevronDown size={16} className="ml-1" />
+          </button>
+          
+          <div 
+            className={`absolute top-full left-0 mt-2 bg-white text-black rounded-lg shadow-lg py-2 min-w-40 z-50 dropdown-menu ${!outilsOpen ? 'hidden' : ''}`}
+            onMouseEnter={() => setOutilsOpen(true)}
+            onMouseLeave={() => setOutilsOpen(false)}
+          >
+            <a 
+              href="https://cc.helium10.com/?crsh_reqid=10748678&aid=3543&pg=1&coupon=COCKPITLAB20&PURL-067214&lang=fr" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              Helium 10
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/keepa" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              Keepa
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/sellerAMP" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              SellerAMP
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/buybotpro" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              BuyBotPro
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/sellerboard" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              SellerBoard
             </a>
           </div>
         </div>
@@ -182,14 +232,6 @@ const Navbar = () => {
             >
               Amazon Seller Central
             </a>
-            <a 
-              href="https://cc.helium10.com/?crsh_reqid=10748678&aid=3543&pg=1&coupon=COCKPITLAB20&PURL-067214&lang=fr" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-white/60 hover:text-white pl-2"
-            >
-              Helium 10
-            </a>
             
             <div className="text-white/80 font-medium mt-4">Formations</div>
             <a 
@@ -215,6 +257,49 @@ const Navbar = () => {
               className="text-white/60 hover:text-white pl-2"
             >
               Liberté Digitale
+            </a>
+            
+            {/* Outils section in mobile menu */}
+            <div className="text-white/80 font-medium mt-4">Outils</div>
+            <a 
+              href="https://cc.helium10.com/?crsh_reqid=10748678&aid=3543&pg=1&coupon=COCKPITLAB20&PURL-067214&lang=fr" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              Helium 10
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/keepa" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              Keepa
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/sellerAMP" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              SellerAMP
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/buybotpro" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              BuyBotPro
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/sellerboard" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              SellerBoard
             </a>
           </div>
         </div>
