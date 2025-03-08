@@ -58,9 +58,30 @@ const Navbar = () => {
             onMouseEnter={() => setSocialOpen(true)}
             onMouseLeave={() => setSocialOpen(false)}
           >
-            <a href="#" className="block px-4 py-2 hover:bg-gray-100">Twitter</a>
-            <a href="#" className="block px-4 py-2 hover:bg-gray-100">LinkedIn</a>
-            <a href="#" className="block px-4 py-2 hover:bg-gray-100">Instagram</a>
+            <a 
+              href="https://www.youtube.com/@cockpitLAB/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              Youtube
+            </a>
+            <a 
+              href="https://www.instagram.com/cockpitlab" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              Instagram
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/jerome-scat/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
       </div>
@@ -102,9 +123,30 @@ const Navbar = () => {
             </a>
             
             <div className="text-white/80 font-medium mt-4">Réseaux sociaux</div>
-            <a href="#" className="text-white/60 hover:text-white pl-2">Twitter</a>
-            <a href="#" className="text-white/60 hover:text-white pl-2">LinkedIn</a>
-            <a href="#" className="text-white/60 hover:text-white pl-2">Instagram</a>
+            <a 
+              href="https://www.youtube.com/@cockpitLAB/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              Youtube
+            </a>
+            <a 
+              href="https://www.instagram.com/cockpitlab" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              Instagram
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/jerome-scat/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
       )}
