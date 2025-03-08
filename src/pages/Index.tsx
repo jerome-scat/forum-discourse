@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Header from '@/components/Header';
@@ -7,32 +6,31 @@ import ThreadList from '@/components/ThreadList';
 import AuthBlockModal from '@/components/AuthBlockModal';
 import { useAuth } from '@/contexts/AuthContext';
 import { Link } from 'react-router-dom';
-
 const Index = () => {
-  const { isAuthenticated, login, showAuthModal, setShowAuthModal } = useAuth();
-  
+  const {
+    isAuthenticated,
+    login,
+    showAuthModal,
+    setShowAuthModal
+  } = useAuth();
+
   // Function to handle contact link click
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    
+
     // Redirect to discourse direct message URL
     window.location.href = 'https://community.cockpitlab.com/new-message?username=Jerome';
   };
-
   const handleLoginClick = () => {
     login();
   };
-
   const handleRegisterClick = () => {
     login(); // For now, both login and register just authenticate the user
   };
-
   const handleCloseModal = () => {
     setShowAuthModal(false);
   };
-
-  return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+  return <div className="min-h-screen flex flex-col bg-gray-50">
       <Navbar />
       <Header />
       
@@ -44,7 +42,7 @@ const Index = () => {
           <div className="flex-grow order-1 md:order-2">
             {/* Titre et paragraphe déplacés ici, au-dessus de ThreadList */}
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">Discussions récentes</h2>
+              <h2 className="font-bold text-gray-900 text-2xl">Bienvenue sur le Forum : Vendre sur Amazon & les autres Marketplaces</h2>
               <p className="text-gray-600">
                 Rejoignez les conversations ou démarrez un{" "}
                 <Link to="/create-thread" className="text-[#edb067] hover:underline">
@@ -73,14 +71,7 @@ const Index = () => {
       </footer>
 
       {/* Modal de blocage d'accès */}
-      <AuthBlockModal 
-        isOpen={!isAuthenticated && showAuthModal}
-        onClose={handleCloseModal}
-        onLogin={handleLoginClick}
-        onRegister={handleRegisterClick}
-      />
-    </div>
-  );
+      <AuthBlockModal isOpen={!isAuthenticated && showAuthModal} onClose={handleCloseModal} onLogin={handleLoginClick} onRegister={handleRegisterClick} />
+    </div>;
 };
-
 export default Index;
