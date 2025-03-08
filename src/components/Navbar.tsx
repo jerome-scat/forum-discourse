@@ -5,6 +5,7 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 const Navbar = () => {
   const [linksOpen, setLinksOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
+  const [formationsOpen, setFormationsOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
@@ -40,6 +41,47 @@ const Navbar = () => {
               className="block px-4 py-2 hover:bg-gray-100"
             >
               Helium 10
+            </a>
+          </div>
+        </div>
+        
+        {/* Menu Formations */}
+        <div className="relative dropdown-container">
+          <button 
+            className="flex items-center text-white/80 hover:text-white"
+            onMouseEnter={() => setFormationsOpen(true)}
+          >
+            Formations <ChevronDown size={16} className="ml-1" />
+          </button>
+          
+          <div 
+            className={`absolute top-full left-0 mt-2 bg-white text-black rounded-lg shadow-lg py-2 min-w-40 z-50 dropdown-menu ${!formationsOpen ? 'hidden' : ''}`}
+            onMouseEnter={() => setFormationsOpen(true)}
+            onMouseLeave={() => setFormationsOpen(false)}
+          >
+            <a 
+              href="https://link.cockpitlab.io/amazon-fba-udemy" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              Amazon FBA IMPACT
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/oseilletv" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              Oseille TV
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/libertedigital" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              Liberté Digitale
             </a>
           </div>
         </div>
@@ -120,6 +162,32 @@ const Navbar = () => {
               className="text-white/60 hover:text-white pl-2"
             >
               Helium 10
+            </a>
+            
+            <div className="text-white/80 font-medium mt-4">Formations</div>
+            <a 
+              href="https://link.cockpitlab.io/amazon-fba-udemy" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              Amazon FBA IMPACT
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/oseilletv" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              Oseille TV
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/libertedigital" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              Liberté Digitale
             </a>
             
             <div className="text-white/80 font-medium mt-4">Réseaux sociaux</div>
