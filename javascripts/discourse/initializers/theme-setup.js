@@ -1,6 +1,50 @@
 
 import { withPluginApi } from "discourse/lib/plugin-api";
 
+export default {
+  name: "cockpitlab-theme-setup",
+  initialize() {
+    withPluginApi("0.8.31", api => {
+      // Ajout de la classe principale pour notre thème
+      document.documentElement.classList.add("discourse-application");
+      
+      // Fonction pour insérer nos éléments personnalisés
+      const insertCustomElements = () => {
+        // Insertion de la barre de navigation supérieure
+        const topNav = createTopNavBar();
+        const existingTopNav = document.querySelector(".cockpitlab-topnav");
+        if (!existingTopNav && document.body) {
+          document.body.insertBefore(topNav, document.body.firstChild);
+        }
+        
+        // Insertion du footer personnalisé
+        const footer = createFooter();
+        const existingFooter = document.querySelector(".cockpitlab-footer");
+        if (!existingFooter && document.body) {
+          document.body.appendChild(footer);
+        }
+        
+        // Forcer l'application des styles
+        applyCustomStyles();
+      };
+      
+      // Insertion immédiate
+      api.onPageChange(() => {
+        // Attendre que le DOM soit complètement chargé
+        setTimeout(() => {
+          insertCustomElements();
+        }, 500);
+      });
+      
+      // Exécution initiale
+      setTimeout(() => {
+        insertCustomElements();
+      }, 500);
+    });
+  }
+};
+
+// Créer la barre de navigation supérieure
 const createTopNavBar = () => {
   const topNav = document.createElement("div");
   topNav.className = "cockpitlab-topnav";
@@ -20,6 +64,7 @@ const createTopNavBar = () => {
   return topNav;
 };
 
+// Créer le footer
 const createFooter = () => {
   const footer = document.createElement("footer");
   footer.className = "cockpitlab-footer";
@@ -74,40 +119,54 @@ const createFooter = () => {
   return footer;
 };
 
-export default {
-  name: "cockpitlab-theme-setup",
-  initialize() {
-    withPluginApi("0.8.31", api => {
-      // Ajout de la classe principale pour notre thème
-      document.documentElement.classList.add("discourse-application");
+// Fonction pour forcer l'application des styles CSS
+const applyCustomStyles = () => {
+  // S'assurer que nos styles sont bien appliqués en priorité
+  const injectStyles = () => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      /* Forcer l'application des styles avec !important */
+      .cockpitlab-topnav {
+        background-color: var(--primary) !important;
+        color: white !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 1000 !important;
+      }
       
-      // Fonction pour insérer nos éléments personnalisés
-      const insertCustomElements = () => {
-        // Insertion de la barre de navigation supérieure
-        const header = document.querySelector(".d-header");
-        if (header) {
-          const topNav = createTopNavBar();
-          document.body.insertBefore(topNav, document.body.firstChild);
-        }
-        
-        // Insertion du footer personnalisé
-        const footer = createFooter();
-        const existingFooter = document.querySelector(".cockpitlab-footer");
-        if (!existingFooter) {
-          document.body.appendChild(footer);
-        }
-      };
+      .cockpitlab-footer {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
       
-      // Insertion immédiate
-      insertCustomElements();
+      .btn-primary,
+      .btn.btn-primary,
+      .btn.btn.btn-primary {
+        background-color: var(--primary) !important;
+        border-color: var(--primary) !important;
+        color: white !important;
+      }
       
-      // Insertion à chaque changement de page Discourse
-      api.onPageChange(() => {
-        // Temporisation pour s'assurer que le DOM est chargé
-        setTimeout(() => {
-          insertCustomElements();
-        }, 300);
-      });
-    });
-  }
-};
+      .d-header {
+        background-color: white !important;
+        border-bottom: 3px solid var(--primary) !important;
+      }
+      
+      /* Forcer les variables CSS custom */
+      :root {
+        --primary: #edb067 !important;
+        --primary-hover: #e09d4e !important;
+        --text-color: #333333 !important;
+        --bg-light: #f8f8f8 !important;
+        --border-color: #dddddd !important;
+        --footer-bg: #f2f2f2 !important;
+        --header-height: 60px !important;
+      }
+    `;
+    document.head.appendChild(styleElement);
+  };
+  
+  injectStyles();
+}
