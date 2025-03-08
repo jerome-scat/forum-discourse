@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Avatar } from '@/components/ui/avatar';
-import { MessageCircle, Eye, Clock } from 'lucide-react';
+import { MessageCircle, Eye, Clock, ThumbsUp, ThumbsDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const categories = [
@@ -36,14 +36,16 @@ const allThreads = [
     replies: 12,
     views: 89,
     category: { id: 8, name: "Growth Hacking", color: "purple", emoji: "🚀" },
-    tags: [availableTags[3], availableTags[4]],  // PPC, Helium10
+    tags: [{ id: 4, name: "PPC", color: "indigo" }, { id: 5, name: "Helium10", color: "amber" }],
     excerpt: "Découvrez les meilleures pratiques pour configurer votre tableau de bord et maximiser votre productivité...",
     lastActivity: "Il y a 30 minutes",
     participants: [
       { name: "Marie Curie", avatar: "https://i.pravatar.cc/150?img=5" },
       { name: "Pierre Martin", avatar: "https://i.pravatar.cc/150?img=8" },
       { name: "Sophie Leblanc", avatar: "https://i.pravatar.cc/150?img=9" }
-    ]
+    ],
+    upvotes: 7,
+    downvotes: 0
   },
   {
     id: 2,
@@ -56,7 +58,7 @@ const allThreads = [
     replies: 34,
     views: 215,
     category: { id: 7, name: "Shopify", color: "green", emoji: "🛍️" },
-    tags: [availableTags[5]],  // Retail Arbitrage
+    tags: [{ id: 6, name: "Retail Arbitrage", color: "purple" }],
     excerpt: "La nouvelle version apporte des fonctionnalités très attendues comme l'intégration avec des outils externes...",
     lastActivity: "Il y a 2 heures",
     participants: [
@@ -64,7 +66,9 @@ const allThreads = [
       { name: "Emilie Blanc", avatar: "https://i.pravatar.cc/150?img=13" },
       { name: "Thomas Noir", avatar: "https://i.pravatar.cc/150?img=14" },
       { name: "Claire Rouge", avatar: "https://i.pravatar.cc/150?img=15" }
-    ]
+    ],
+    upvotes: 12,
+    downvotes: 2
   },
   {
     id: 3,
@@ -77,13 +81,15 @@ const allThreads = [
     replies: 8,
     views: 67,
     category: { id: 1, name: "Vendre sur Amazon", color: "amber", emoji: "📦" },
-    tags: [availableTags[0], availableTags[2]],  // Amazon FBA, Seller Central
+    tags: [{ id: 1, name: "Amazon FBA", color: "sky" }, { id: 3, name: "Seller Central", color: "emerald" }],
     excerpt: "Je rencontre un problème lors de la tentative de connexion à mon API externe. Le message d'erreur indique...",
     lastActivity: "Hier",
     participants: [
       { name: "Admin", avatar: "https://i.pravatar.cc/150?img=2" },
       { name: "Pierre Blanc", avatar: "https://i.pravatar.cc/150?img=16" }
-    ]
+    ],
+    upvotes: 4,
+    downvotes: 1
   },
   {
     id: 4,
@@ -103,7 +109,9 @@ const allThreads = [
       { name: "Admin", avatar: "https://i.pravatar.cc/150?img=2" },
       { name: "Marie Curie", avatar: "https://i.pravatar.cc/150?img=5" },
       { name: "Jean Dupont", avatar: "https://i.pravatar.cc/150?img=1" }
-    ]
+    ],
+    upvotes: 19,
+    downvotes: 0
   },
   {
     id: 5,
@@ -116,13 +124,15 @@ const allThreads = [
     replies: 15,
     views: 122,
     category: { id: 2, name: "Comptabilité / Facturation", color: "blue", emoji: "📊" },
-    tags: [availableTags[2], availableTags[4]],  // Seller Central, Helium10
+    tags: [{ id: 3, name: "Seller Central", color: "emerald" }, { id: 5, name: "Helium10", color: "amber" }],
     excerpt: "Les nouveaux rapports personnalisés offrent beaucoup de possibilités, voici un guide pas à pas pour créer...",
     lastActivity: "Il y a 4 jours",
     participants: [
       { name: "Jean Dupont", avatar: "https://i.pravatar.cc/150?img=1" },
       { name: "Admin", avatar: "https://i.pravatar.cc/150?img=2" }
-    ]
+    ],
+    upvotes: 6,
+    downvotes: 0
   },
   {
     id: 6,
@@ -135,13 +145,15 @@ const allThreads = [
     replies: 28,
     views: 143,
     category: { id: 4, name: "Amazon KDP", color: "orange", emoji: "📚" },
-    tags: [availableTags[0], availableTags[1]],  // Amazon FBA, Amazon FBM
+    tags: [{ id: 1, name: "Amazon FBA", color: "sky" }, { id: 2, name: "Amazon FBM", color: "rose" }],
     excerpt: "Après un mois d'utilisation intensive, voici mes impressions et quelques astuces que j'ai découvertes...",
     lastActivity: "Il y a 1 semaine",
     participants: [
       { name: "Jean Dupont", avatar: "https://i.pravatar.cc/150?img=1" },
       { name: "Sophie Leblanc", avatar: "https://i.pravatar.cc/150?img=9" }
-    ]
+    ],
+    upvotes: 22,
+    downvotes: 3
   },
   {
     id: 7,
@@ -160,7 +172,9 @@ const allThreads = [
     participants: [
       { name: "Admin", avatar: "https://i.pravatar.cc/150?img=2" },
       { name: "Pierre Martin", avatar: "https://i.pravatar.cc/150?img=8" }
-    ]
+    ],
+    upvotes: 3,
+    downvotes: 1
   },
   {
     id: 8,
@@ -173,14 +187,16 @@ const allThreads = [
     replies: 19,
     views: 98,
     category: { id: 3, name: "Import / Export", color: "emerald", emoji: "🚢" },
-    tags: [availableTags[2], availableTags[3]],  // Seller Central, PPC
+    tags: [{ id: 3, name: "Seller Central", color: "emerald" }, { id: 4, name: "PPC", color: "indigo" }],
     excerpt: "Nous avons ajouté 5 nouveaux templates pour vos rapports mensuels, disponibles dès maintenant...",
     lastActivity: "Il y a 3 semaines",
     participants: [
       { name: "Jean Dupont", avatar: "https://i.pravatar.cc/150?img=1" },
       { name: "Marie Durand", avatar: "https://i.pravatar.cc/150?img=5" },
       { name: "Thomas Martin", avatar: "https://i.pravatar.cc/150?img=10" }
-    ]
+    ],
+    upvotes: 15,
+    downvotes: 0
   }
 ];
 
@@ -206,6 +222,36 @@ const getCategoryColorClass = (color: string) => {
 };
 
 const ThreadCard = ({ thread }: { thread: any }) => {
+  const [upvotes, setUpvotes] = useState(thread.upvotes || 0);
+  const [downvotes, setDownvotes] = useState(thread.downvotes || 0);
+  const [userVote, setUserVote] = useState<'up' | 'down' | null>(null);
+
+  const handleUpvote = () => {
+    if (userVote === 'up') {
+      setUpvotes(prev => prev - 1);
+      setUserVote(null);
+    } else {
+      setUpvotes(prev => prev + 1);
+      if (userVote === 'down') {
+        setDownvotes(prev => prev - 1);
+      }
+      setUserVote('up');
+    }
+  };
+
+  const handleDownvote = () => {
+    if (userVote === 'down') {
+      setDownvotes(prev => prev - 1);
+      setUserVote(null);
+    } else {
+      setDownvotes(prev => prev + 1);
+      if (userVote === 'up') {
+        setUpvotes(prev => prev - 1);
+      }
+      setUserVote('down');
+    }
+  };
+
   return (
     <div className="thread-card hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between">
@@ -225,6 +271,26 @@ const ThreadCard = ({ thread }: { thread: any }) => {
                 <img src={thread.author.avatar} alt={thread.author.name} />
               </Avatar>
               <span>Par <a href="#" className="text-[#edb067] hover:underline">{thread.author.name}</a> <span className="text-gray-500 opacity-70">• {thread.date.toLowerCase()}</span></span>
+            </div>
+            
+            <div className="flex items-center space-x-3 ml-2">
+              <button 
+                onClick={handleUpvote}
+                className={`flex items-center gap-1 ${userVote === 'up' ? 'text-[#edb067]' : 'text-gray-500 hover:text-[#edb067]'} transition-colors`}
+                aria-label="J'aime"
+              >
+                <ThumbsUp size={16} />
+                <span>{upvotes}</span>
+              </button>
+              
+              <button 
+                onClick={handleDownvote}
+                className={`flex items-center gap-1 ${userVote === 'down' ? 'text-red-500' : 'text-gray-500 hover:text-red-500'} transition-colors`}
+                aria-label="Je n'aime pas"
+              >
+                <ThumbsDown size={16} />
+                <span>{downvotes}</span>
+              </button>
             </div>
           </div>
         </div>
