@@ -71,7 +71,7 @@ const Index = () => {
             <div>
               <p className="text-gray-600 text-sm">
                 © 2015-{currentYear} CockpitLab. 
-                Imaginé et Développé avec <Heart className="inline text-red-500" size={14} /> par <a href="https://community.cockpitlab.com/u/Jerome" target="_blank" rel="noopener noreferrer" className="text-[#edb067] hover:underline">Jérôme SCAT</a>.
+                Imaginé et Développé avec <Heart className="inline text-red-500" size={14} fill="currentColor" /> par <a href="https://community.cockpitlab.com/u/Jerome" target="_blank" rel="noopener noreferrer" className="text-[#edb067] hover:underline">Jérôme SCAT</a>.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-4 md:space-x-4">
