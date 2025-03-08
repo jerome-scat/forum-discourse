@@ -70,7 +70,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div>
               <p className="text-gray-600 text-sm">
-                © 2015-{currentYear} CockpitLab. Tous droits réservés. 
+                © 2015-{currentYear} CockpitLab. 
                 Imaginé et Développé avec <Heart className="inline text-red-500" size={14} /> par <a href="https://community.cockpitlab.com/u/Jerome" target="_blank" rel="noopener noreferrer" className="text-[#edb067] hover:underline">Jérôme SCAT</a>.
               </p>
             </div>
