@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Header from '@/components/Header';
@@ -43,7 +42,7 @@ const Index = () => {
           <div className="flex-grow order-1 md:order-2">
             {/* Titre et paragraphe déplacés ici, au-dessus de ThreadList */}
             <div className="mb-6">
-              <h1 className="font-bold text-gray-900 text-2xl">Bienvenue sur le Forum : Vendre sur Amazon & les autres Marketplaces</h1>
+              <h1 className="font-bold text-gray-900 text-2xl">Vendre sur Amazon & les autres Marketplaces</h1>
               <p className="text-gray-600">
                 Rejoignez les conversations ou démarrez un{" "}
                 <Link to="/create-thread" className="text-[#edb067] hover:underline">
