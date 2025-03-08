@@ -314,16 +314,6 @@ const ThreadList = () => {
 
   return (
     <div className="my-6">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Discussions récentes</h2>
-        <p className="text-gray-600">
-          Rejoignez les conversations ou démarrez un{" "}
-          <Link to="/create-thread" className="text-[#edb067] hover:underline">
-            nouveau sujet
-          </Link>
-        </p>
-      </div>
-      
       <div className="space-y-4">
         {threads.map((thread) => (
           <ThreadCard key={thread.id} thread={thread} />

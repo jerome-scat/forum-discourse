@@ -6,6 +6,7 @@ import Sidebar from '@/components/Sidebar';
 import ThreadList from '@/components/ThreadList';
 import AuthBlockModal from '@/components/AuthBlockModal';
 import { useAuth } from '@/contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const { isAuthenticated, login, showAuthModal, setShowAuthModal } = useAuth();
@@ -41,6 +42,16 @@ const Index = () => {
             <Sidebar />
           </div>
           <div className="flex-grow order-1 md:order-2">
+            {/* Titre et paragraphe déplacés ici, au-dessus de ThreadList */}
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-gray-900">Discussions récentes</h2>
+              <p className="text-gray-600">
+                Rejoignez les conversations ou démarrez un{" "}
+                <Link to="/create-thread" className="text-[#edb067] hover:underline">
+                  nouveau sujet
+                </Link>
+              </p>
+            </div>
             <ThreadList />
           </div>
         </div>
