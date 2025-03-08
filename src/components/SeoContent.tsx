@@ -31,10 +31,10 @@ const SeoContent = () => {
         <CollapsibleTrigger asChild>
           <Button 
             variant="ghost" 
-            className="w-full flex items-center justify-between rounded-none bg-gray-50 hover:bg-gray-100 py-4 px-6"
+            className="w-full flex items-center justify-center rounded-none bg-gray-50 hover:bg-gray-100 py-4 px-6"
           >
             <span className="font-medium text-gray-900">Lire plus d'informations sur {pageTitle}</span>
-            {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+            <span className="ml-2">{isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}</span>
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent className="p-6">
