@@ -10,6 +10,7 @@ import {
 
 const SeoContent = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pageTitle = "Vendre sur Amazon & les autres Marketplaces";
 
   return (
     <div className="mt-12 mx-auto px-4">
@@ -32,7 +33,7 @@ const SeoContent = () => {
             variant="ghost" 
             className="w-full flex items-center justify-between rounded-none bg-gray-50 hover:bg-gray-100 py-4 px-6"
           >
-            <span className="font-medium text-gray-900">Voir plus d'informations</span>
+            <span className="font-medium text-gray-900">Lire plus d'informations sur {pageTitle}</span>
             {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
           </Button>
         </CollapsibleTrigger>
