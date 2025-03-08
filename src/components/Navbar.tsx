@@ -92,6 +92,14 @@ const Navbar = () => {
             >
               GS1
             </a>
+            <a 
+              href="https://link.cockpitlab.io/dougs1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block px-4 py-2 hover:bg-gray-100"
+            >
+              Doug's Compta
+            </a>
           </div>
         </div>
         
@@ -263,6 +271,14 @@ const Navbar = () => {
               className="text-white/60 hover:text-white pl-2"
             >
               GS1
+            </a>
+            <a 
+              href="https://link.cockpitlab.io/dougs1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-white pl-2"
+            >
+              Doug's Compta
             </a>
             
             <div className="text-white/80 font-medium mt-4">Formations</div>
