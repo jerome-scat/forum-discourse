@@ -13,29 +13,31 @@ const SeoContent = () => {
 
   return (
     <div className="mt-12 mx-auto px-4">
+      <div className="space-y-6 prose max-w-none text-center mx-auto">
+        <h2 className="text-2xl font-semibold text-gray-900">Guide complet pour vendre sur Amazon en 2023</h2>
+        <div className="text-gray-700">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit amet leo consequat posuere.
+          </p>
+        </div>
+      </div>
+      
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
-        className="rounded-lg overflow-hidden"
+        className="rounded-lg overflow-hidden mt-6"
       >
         <CollapsibleTrigger asChild>
           <Button 
             variant="ghost" 
             className="w-full flex items-center justify-between rounded-none bg-gray-50 hover:bg-gray-100 py-4 px-6"
           >
-            <span className="font-medium text-gray-900">Guide complet pour vendre sur Amazon en 2023</span>
+            <span className="font-medium text-gray-900">Voir plus d'informations</span>
             {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent className="p-6">
           <div className="space-y-8 prose max-w-none text-center mx-auto">
-            <h2 className="text-2xl font-semibold text-gray-900">Guide complet pour vendre sur Amazon en 2023</h2>
-            <div className="text-gray-700">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit amet leo consequat posuere.
-              </p>
-            </div>
-
             <h2 className="text-2xl font-semibold text-gray-900">Les meilleures pratiques SEO pour votre boutique en ligne</h2>
             <div className="text-gray-700">
               <p>
