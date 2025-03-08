@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Avatar } from '@/components/ui/avatar';
 import { MessageCircle, Eye, Clock } from 'lucide-react';
@@ -314,8 +315,8 @@ const ThreadList = () => {
 
   return (
     <div className="my-6">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Discussions récentes</h2>
+      <div className="mb-6 text-center">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">Discussions récentes</h2>
         <p className="text-gray-600">
           Rejoignez les conversations ou démarrez un{" "}
           <Link to="/create-thread" className="text-[#edb067] hover:underline">
