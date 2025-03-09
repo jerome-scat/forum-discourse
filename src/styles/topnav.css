@@ -1,6 +1,10 @@
 
 /* CockpitLab Discourse Theme - Top Navigation */
 
+.d-header {
+  box-shadow: none !important;
+}
+
 .cockpitlab-topnav {
   background-color: var(--primary) !important;
   color: white !important;
@@ -14,7 +18,8 @@
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  z-index: 1100 !important; /* Augmenté pour être au-dessus de l'en-tête Discourse */
+  z-index: 1100 !important; 
+  box-sizing: border-box !important;
 }
 
 .cockpitlab-topnav-container {
@@ -38,22 +43,45 @@
   text-decoration: underline !important;
 }
 
-/* Styles spécifiques pour les menus déroulants de la barre de navigation */
+/* Styles for dropdown menus in the navigation bar */
 .cockpitlab-dropdown {
   position: relative !important;
   display: inline-block !important;
 }
 
+.cockpitlab-dropdown-button {
+  color: white !important;
+  text-decoration: none !important;
+  margin: 0 10px !important;
+  font-weight: 500 !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.cockpitlab-dropdown-button:after {
+  content: "▼" !important;
+  font-size: 0.6em !important;
+  margin-left: 5px !important;
+  display: inline-block !important;
+}
+
 .cockpitlab-dropdown-content {
-  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
   position: absolute !important;
   background-color: white !important;
   min-width: 160px !important;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2) !important;
-  z-index: 1200 !important; /* Augmenté pour être au-dessus de la barre de navigation */
+  z-index: 1200 !important;
   border-radius: 4px !important;
   top: 100% !important;
   left: 0 !important;
+  transition: opacity 0.2s, visibility 0.2s !important;
+  transform: translateY(10px) !important;
 }
 
 .cockpitlab-dropdown-content a {
@@ -71,15 +99,17 @@
 }
 
 .cockpitlab-dropdown:hover .cockpitlab-dropdown-content {
-  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
-/* Correction du décalage pour le contenu principal de Discourse */
+/* Fix for the main Discourse content */
 body {
-  padding-top: 35px !important; /* Hauteur de la cockpitlab-topnav */
+  padding-top: 35px !important; /* Height of the cockpitlab-topnav */
 }
 
-/* Version mobile */
+/* Mobile version */
 @media (max-width: 768px) {
   .cockpitlab-dropdown-content {
     width: 100% !important;
@@ -88,15 +118,42 @@ body {
   
   .cockpitlab-mobile-menu-btn {
     display: block !important;
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
   }
   
   .cockpitlab-topnav-links {
     display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: var(--primary) !important;
+    padding: 10px 0 !important;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1) !important;
   }
   
   .cockpitlab-topnav-links.open {
     display: flex !important;
     flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .cockpitlab-topnav-links a,
+  .cockpitlab-dropdown {
+    margin: 8px 0 !important;
     width: 100% !important;
+    text-align: center !important;
+  }
+  
+  .cockpitlab-dropdown-content {
+    position: relative !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border-top: 1px solid rgba(255,255,255,0.1) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
   }
 }
