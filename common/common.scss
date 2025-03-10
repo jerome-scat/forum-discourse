@@ -13,7 +13,7 @@
 }
 
 // Global Styles
-body.discourse-application {
+body {
   color: var(--text-color);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
@@ -98,11 +98,9 @@ body.discourse-application {
   border-color: var(--primary);
 }
 
-// TopNav Styles - intégrés directement au lieu d'utiliser @import
-/* CockpitLab Discourse Theme - Top Navigation */
-
+// TopNav Styles
 .d-header {
-  box-shadow: none !important;
+  box-shadow: none;
 }
 
 .cockpitlab-topnav {
@@ -143,7 +141,7 @@ body.discourse-application {
   text-decoration: underline;
 }
 
-/* Styles for dropdown menus in the navigation bar */
+// Dropdown menu in navigation
 .cockpitlab-dropdown {
   position: relative;
   display: inline-block;
@@ -204,12 +202,12 @@ body.discourse-application {
   transform: translateY(0);
 }
 
-/* Fix for the main Discourse content */
+// Content fix for topnav
 body {
-  padding-top: 35px; /* Height of the cockpitlab-topnav */
+  padding-top: 35px; // Height of the cockpitlab-topnav
 }
 
-/* Mobile version */
+// Mobile version
 @media (max-width: 768px) {
   .cockpitlab-dropdown-content {
     width: 100%;
