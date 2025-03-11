@@ -1,0 +1,20 @@
+
+.topic-list .topic-list-item td {
+  padding: 12px 5px;
+}
+
+.topic-list .topic-list-item:hover {
+  background-color: var(--bg-light);
+}
+
+.topic-list .topic-list-item.visited a.title:visited {
+  color: var(--primary);
+}
+
+.badge-wrapper {
+  margin-right: 5px;
+}
+
+.badge-wrapper.bullet .badge-category-bg {
+  border-radius: 50%;
+}

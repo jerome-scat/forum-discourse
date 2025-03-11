@@ -1,0 +1,24 @@
+
+.btn-primary,
+.btn.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover,
+.btn.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li > a.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.nav-pills > li > a:hover {
+  background-color: var(--primary-hover);
+  color: white;
+}
