@@ -2,9 +2,9 @@
 // CockpitLab Discourse Theme - Main SCSS file
 
 // Import modular SCSS files
-@import "variables";
-@import "global";
-@import "buttons";
-@import "topic-list";
-@import "forms";
-@import "footer";
+@import "common/variables";
+@import "common/global";
+@import "common/buttons";
+@import "common/topic-list";
+@import "common/forms";
+@import "common/footer";
