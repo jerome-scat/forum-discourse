@@ -17,3 +17,7 @@ body {
 .d-header-icons .d-icon:hover {
   color: var(--primary);
 }
+
+ol.category-breadcrumb, ul#navigation-bar {
+  display: none;
+}
