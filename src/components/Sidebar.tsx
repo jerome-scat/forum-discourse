@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tag as TagIcon, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Confetti from '@/components/Confetti';
@@ -83,6 +83,32 @@ const TagItem = ({ tag }: { tag: any }) => {
 
 const Sidebar = () => {
   const [showConfetti, setShowConfetti] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  
+  // Animation cycle every 30 seconds
+  useEffect(() => {
+    const animationInterval = setInterval(() => {
+      setIsAnimating(true);
+      
+      // Animation duration is 3 seconds
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 3000);
+    }, 30000);
+    
+    // Trigger animation on initial load after 2 seconds
+    const initialTimeout = setTimeout(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 3000);
+    }, 2000);
+    
+    return () => {
+      clearInterval(animationInterval);
+      clearTimeout(initialTimeout);
+    };
+  }, []);
   
   const handleNewThread = () => {
     // Try to find the Discourse new topic button and click it
@@ -112,26 +138,21 @@ const Sidebar = () => {
   
   return (
     <div className="w-full md:w-80 lg:w-96 md:pr-6">
-      <div className="mb-6">
+      <div className="mb-6 relative">
         <Button 
           onClick={handleNewThread}
-          className="w-full bg-[#edb067] hover:bg-[#e09d4e] text-white flex items-center justify-center gap-2 py-3 px-4 text-base font-medium shadow-md"
+          className={`
+            w-full bg-[#edb067] hover:bg-[#e09d4e] text-white 
+            flex items-center justify-center gap-2 py-3 px-4 
+            text-base font-medium shadow-md relative z-10
+            ${isAnimating ? 'button-pulse-active' : ''}
+          `}
         >
           <PlusCircle size={20} />
           Nouvelle discussion
         </Button>
+        <div className={`button-pulse-container ${isAnimating ? 'animate-pulse-active' : ''}`}></div>
       </div>
-      
-      {/* Add an inline style tag to ensure button visibility */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          .w-full.md\\:w-80.lg\\:w-96 button {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-          }
-        `
-      }} />
       
       <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100 mb-4">
         <h3 className="font-medium text-gray-900 mb-3">Catégories</h3>
