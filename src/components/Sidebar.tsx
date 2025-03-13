@@ -87,6 +87,15 @@ const Sidebar = () => {
   
   // Animation cycle every 30 seconds
   useEffect(() => {
+    // Start animation immediately
+    setIsAnimating(true);
+    
+    // End first animation after 3 seconds
+    const initialAnimationEnd = setTimeout(() => {
+      setIsAnimating(false);
+    }, 3000);
+    
+    // Set up recurring animation every 30 seconds
     const animationInterval = setInterval(() => {
       setIsAnimating(true);
       
@@ -96,17 +105,9 @@ const Sidebar = () => {
       }, 3000);
     }, 30000);
     
-    // Trigger animation on initial load after 2 seconds
-    const initialTimeout = setTimeout(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 3000);
-    }, 2000);
-    
     return () => {
+      clearTimeout(initialAnimationEnd);
       clearInterval(animationInterval);
-      clearTimeout(initialTimeout);
     };
   }, []);
   
@@ -144,7 +145,7 @@ const Sidebar = () => {
           className={`
             w-full bg-[#edb067] hover:bg-[#e09d4e] text-white 
             flex items-center justify-center gap-2 py-3 px-4 
-            text-base font-medium shadow-md relative z-10
+            text-base font-medium shadow-md relative z-10 btn-glow
             ${isAnimating ? 'button-pulse-active' : ''}
           `}
         >
