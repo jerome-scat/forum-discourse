@@ -39,3 +39,7 @@
   border-radius: 1em;
   padding: 0.5em;
 }
+
+.badge-category__wrapper .badge-category::before {
+  display: none;
+}
