@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tag as TagIcon, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Confetti from '@/components/Confetti';
@@ -84,45 +83,85 @@ const TagItem = ({ tag }: { tag: any }) => {
 const Sidebar = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   
+  useEffect(() => {
+    const forceButtonVisibility = () => {
+      const buttons = document.querySelectorAll('.bg-\\[\\#edb067\\], .bg-\\[\\#F97316\\], [class*="w-full"] button');
+      
+      buttons.forEach(button => {
+        if (button instanceof HTMLElement) {
+          button.style.display = 'flex';
+          button.style.visibility = 'visible';
+          button.style.opacity = '1';
+          button.style.zIndex = '9999';
+          button.style.position = 'relative';
+        }
+      });
+    };
+
+    forceButtonVisibility();
+    
+    setTimeout(forceButtonVisibility, 500);
+    
+    const observer = new MutationObserver(forceButtonVisibility);
+    observer.observe(document.body, { childList: true, subtree: true });
+    
+    return () => observer.disconnect();
+  }, []);
+  
   const handleNewThread = () => {
-    // Try to find the Discourse new topic button and click it
     try {
-      const discourseNewTopicButton = document.querySelector('.btn-primary.btn.btn-icon-text.create');
-      if (discourseNewTopicButton && discourseNewTopicButton instanceof HTMLElement) {
-        discourseNewTopicButton.click();
-      } else {
-        // Fallback to default behavior
-        console.log('New thread button not found in Discourse, using default action');
-        window.location.href = '/new-topic';
+      const selectors = [
+        '.btn-primary.btn.btn-icon-text.create',
+        '.create-topic-button',
+        'button.new-topic-button',
+        'a[href="/new-topic"]',
+        'a[href*="new-topic"]',
+        '.btn[title*="new topic"]',
+        '.btn[title*="nouvelle discussion"]'
+      ];
+      
+      for (const selector of selectors) {
+        const button = document.querySelector(selector);
+        if (button && button instanceof HTMLElement) {
+          console.log('Found new topic button with selector:', selector);
+          button.click();
+          setShowConfetti(true);
+          setTimeout(() => setShowConfetti(false), 3000);
+          return;
+        }
       }
+      
+      console.log('No new topic button found, using fallback URL');
+      window.location.href = '/new-topic';
     } catch (error) {
-      console.error('Error clicking new topic button:', error);
-      // Fallback URL navigation
+      console.error('Error navigating to new topic:', error);
       window.location.href = '/new-topic';
     }
     
-    // Show confetti effect
     setShowConfetti(true);
-    
-    // Hide confetti after 3 seconds
-    setTimeout(() => {
-      setShowConfetti(false);
-    }, 3000);
+    setTimeout(() => setShowConfetti(false), 3000);
   };
   
   return (
     <div className="w-full md:w-80 lg:w-96 md:pr-6">
-      <div className="mb-6">
+      <div className="mb-6 relative z-50">
         <Button 
           onClick={handleNewThread}
-          className="w-full bg-[#edb067] hover:bg-[#e09d4e] text-white flex items-center justify-center gap-2 py-3 px-4 text-base font-medium shadow-md"
+          className="w-full bg-[#F97316] hover:bg-[#EA580C] text-white flex items-center justify-center gap-2 py-4 px-4 text-base font-semibold shadow-lg rounded-lg border-2 border-[#F97316]"
+          style={{
+            display: 'flex !important',
+            visibility: 'visible !important',
+            opacity: '1 !important',
+            zIndex: 9999,
+            position: 'relative',
+            minHeight: '48px'
+          }}
         >
-          <PlusCircle size={20} />
+          <PlusCircle size={22} />
           Nouvelle discussion
         </Button>
       </div>
       
-      {/* Add an inline style tag to ensure button visibility */}
       <style dangerouslySetInnerHTML={{
         __html: `
           .w-full.md\\:w-80.lg\\:w-96 button {
