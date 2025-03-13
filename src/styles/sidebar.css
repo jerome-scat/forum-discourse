@@ -1,0 +1,14 @@
+
+/* CockpitLab Discourse Theme - Sidebar Styles */
+
+.sidebar-wrapper {
+  border-right: 1px solid var(--border-color) !important;
+}
+
+.sidebar-section-link-wrapper .sidebar-section-link.active {
+  background-color: rgba(237, 176, 103, 0.1) !important;
+}
+
+.sidebar-section-link-wrapper .sidebar-section-link.active .sidebar-section-link-prefix.icon svg {
+  color: var(--primary) !important;
+}

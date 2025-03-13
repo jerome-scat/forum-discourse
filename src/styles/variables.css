@@ -1,0 +1,12 @@
+
+/* CockpitLab Discourse Theme - Variables */
+
+:root {
+  --primary: #edb067 !important;
+  --primary-hover: #e09d4e !important;
+  --text-color: #333333 !important;
+  --bg-light: #f8f8f8 !important;
+  --border-color: #dddddd !important;
+  --footer-bg: #f2f2f2 !important;
+  --header-height: 60px !important;
+}

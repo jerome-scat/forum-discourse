@@ -1,0 +1,51 @@
+
+/* CockpitLab Discourse Theme - Topic List Styles */
+
+.topic-list .topic-list-item td {
+  padding: 12px 5px !important;
+}
+
+.topic-list .topic-list-item:hover {
+  background-color: var(--bg-light) !important;
+}
+
+.topic-list .topic-list-item.visited a.title:visited {
+  color: var(--primary) !important;
+}
+
+.badge-wrapper {
+  margin-right: 5px !important;
+}
+
+.badge-wrapper.bullet .badge-category-bg {
+  border-radius: 50% !important;
+}
+
+.user-card-avatar {
+  border: 3px solid var(--primary) !important;
+}
+
+.topic-card .main-link {
+  display: grid;
+  grid-template-areas: "title title"
+  "tags tags"
+  "excerpt excerpt"
+  "op op"
+  "metadata metadata" !important;
+  grid-template-rows: auto auto 1fr auto auto;
+  flex-grow: 1;
+  padding: 1rem 1.5rem 1rem 0 !important;
+  box-sizing: border-box;
+  box-shadow: none !important;
+}
+
+.badge-category__wrapper {
+  background-color: var(--category-badge-color) !important;
+  color: var(--category-badge-text-color) !important;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+
+.badge-category__wrapper .badge-category::before {
+  display: none;
+}
