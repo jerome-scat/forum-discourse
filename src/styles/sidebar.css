@@ -12,3 +12,24 @@
 .sidebar-section-link-wrapper .sidebar-section-link.active .sidebar-section-link-prefix.icon svg {
   color: var(--primary) !important;
 }
+
+/* Fix for "Nouvelle discussion" button visibility */
+.w-full button[class*="bg-[#edb067]"],
+.md\:w-80 button[class*="bg-[#edb067]"],
+.lg\:w-96 button[class*="bg-[#edb067]"] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 10 !important;
+  font-weight: 500 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Improve button contrast and visibility */
+.w-full button[class*="bg-[#edb067]"]:hover,
+.md\:w-80 button[class*="bg-[#edb067]"]:hover,
+.lg\:w-96 button[class*="bg-[#edb067]"]:hover {
+  background-color: #e09d4e !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}

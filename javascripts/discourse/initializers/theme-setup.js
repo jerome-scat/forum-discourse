@@ -66,6 +66,18 @@ function applyCustomStyles() {
       position: absolute !important;
       pointer-events: none !important;
     }
+    
+    /* Ensure Nouvelle discussion button is visible */
+    .btn.bg-\\[\\#edb067\\],
+    [class*="w-full"] button,
+    [class*="md\\:w-80"] button {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      pointer-events: auto !important;
+      z-index: 10 !important;
+    }
   `;
   document.head.appendChild(styleElement);
 }
@@ -86,10 +98,32 @@ function setupInitialTasks(api) {
   // Setup page change handler
   api.onPageChange(() => {
     cleanupInterface();
+    // Ensure the button is always visible after page changes
+    setTimeout(() => {
+      ensureButtonVisibility();
+    }, 300);
   });
   
   // Execute initially with a slight delay to ensure DOM is loaded
   setTimeout(() => {
     cleanupInterface();
+    ensureButtonVisibility();
   }, 500);
+}
+
+/**
+ * Function to specifically ensure the "Nouvelle discussion" button is visible
+ */
+function ensureButtonVisibility() {
+  const newThreadButtons = document.querySelectorAll('.bg-\\[\\#edb067\\], [class*="w-full md:w-80"] button');
+  
+  if (newThreadButtons.length > 0) {
+    newThreadButtons.forEach(button => {
+      if (button instanceof HTMLElement) {
+        button.style.display = 'flex';
+        button.style.visibility = 'visible';
+        button.style.opacity = '1';
+      }
+    });
+  }
 }

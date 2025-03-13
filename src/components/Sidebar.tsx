@@ -85,10 +85,23 @@ const Sidebar = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   
   const handleNewThread = () => {
-    // Simulate creating a new thread
-    console.log('New thread created!');
+    // Try to find the Discourse new topic button and click it
+    try {
+      const discourseNewTopicButton = document.querySelector('.btn-primary.btn.btn-icon-text.create');
+      if (discourseNewTopicButton && discourseNewTopicButton instanceof HTMLElement) {
+        discourseNewTopicButton.click();
+      } else {
+        // Fallback to default behavior
+        console.log('New thread button not found in Discourse, using default action');
+        window.location.href = '/new-topic';
+      }
+    } catch (error) {
+      console.error('Error clicking new topic button:', error);
+      // Fallback URL navigation
+      window.location.href = '/new-topic';
+    }
     
-    // Show confetti
+    // Show confetti effect
     setShowConfetti(true);
     
     // Hide confetti after 3 seconds
@@ -102,12 +115,23 @@ const Sidebar = () => {
       <div className="mb-6">
         <Button 
           onClick={handleNewThread}
-          className="w-full bg-[#edb067] hover:bg-[#e09d4e] text-white flex items-center justify-center gap-2"
+          className="w-full bg-[#edb067] hover:bg-[#e09d4e] text-white flex items-center justify-center gap-2 py-3 px-4 text-base font-medium shadow-md"
         >
-          <PlusCircle size={18} />
+          <PlusCircle size={20} />
           Nouvelle discussion
         </Button>
       </div>
+      
+      {/* Add an inline style tag to ensure button visibility */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          .w-full.md\\:w-80.lg\\:w-96 button {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+        `
+      }} />
       
       <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100 mb-4">
         <h3 className="font-medium text-gray-900 mb-3">Catégories</h3>
