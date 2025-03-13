@@ -18,3 +18,28 @@
 .badge-wrapper.bullet .badge-category-bg {
   border-radius: 50%;
 }
+
+.topic-card .main-link {
+  display: grid;
+  grid-template-areas: "title title"
+  "tags tags"
+  "excerpt excerpt"
+  "op op"
+  "metadata metadata" !important;
+  grid-template-rows: auto auto 1fr auto auto;
+  flex-grow: 1;
+  padding: 1rem 1.5rem 1rem 0 !important;
+  box-sizing: border-box;
+  box-shadow: none !important;
+}
+
+.badge-category__wrapper {
+  background-color: var(--category-badge-color) !important;
+  color: var(--category-badge-text-color) !important;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+
+.badge-category__wrapper .badge-category::before {
+  display: none;
+}
