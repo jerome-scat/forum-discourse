@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Tag as TagIcon, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Confetti from '@/components/Confetti';
@@ -83,94 +83,22 @@ const TagItem = ({ tag }: { tag: any }) => {
 const Sidebar = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   
-  useEffect(() => {
-    const forceButtonVisibility = () => {
-      const buttons = document.querySelectorAll('.bg-\\[\\#edb067\\], .bg-\\[\\#F97316\\], [class*="w-full"] button');
-      
-      buttons.forEach(button => {
-        if (button instanceof HTMLElement) {
-          button.style.display = 'flex';
-          button.style.visibility = 'visible';
-          button.style.opacity = '1';
-          button.style.zIndex = '9999';
-          button.style.position = 'relative';
-        }
-      });
-    };
-
-    forceButtonVisibility();
-    
-    setTimeout(forceButtonVisibility, 500);
-    
-    const observer = new MutationObserver(forceButtonVisibility);
-    observer.observe(document.body, { childList: true, subtree: true });
-    
-    return () => observer.disconnect();
-  }, []);
-  
   const handleNewThread = () => {
-    try {
-      const selectors = [
-        '.btn-primary.btn.btn-icon-text.create',
-        '.create-topic-button',
-        'button.new-topic-button',
-        'a[href="/new-topic"]',
-        'a[href*="new-topic"]',
-        '.btn[title*="new topic"]',
-        '.btn[title*="nouvelle discussion"]'
-      ];
-      
-      for (const selector of selectors) {
-        const button = document.querySelector(selector);
-        if (button && button instanceof HTMLElement) {
-          console.log('Found new topic button with selector:', selector);
-          button.click();
-          setShowConfetti(true);
-          setTimeout(() => setShowConfetti(false), 3000);
-          return;
-        }
-      }
-      
-      console.log('No new topic button found, using fallback URL');
-      window.location.href = '/new-topic';
-    } catch (error) {
-      console.error('Error navigating to new topic:', error);
-      window.location.href = '/new-topic';
-    }
-    
     setShowConfetti(true);
     setTimeout(() => setShowConfetti(false), 3000);
   };
   
   return (
     <div className="w-full md:w-80 lg:w-96 md:pr-6">
-      <div className="mb-6 relative z-50">
+      <div className="mb-6">
         <Button 
           onClick={handleNewThread}
           className="w-full bg-[#F97316] hover:bg-[#EA580C] text-white flex items-center justify-center gap-2 py-4 px-4 text-base font-semibold shadow-lg rounded-lg border-2 border-[#F97316]"
-          style={{
-            display: 'flex !important',
-            visibility: 'visible !important',
-            opacity: '1 !important',
-            zIndex: 9999,
-            position: 'relative',
-            minHeight: '48px'
-          }}
         >
           <PlusCircle size={22} />
           Nouvelle discussion
         </Button>
       </div>
-      
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          .w-full.md\\:w-80.lg\\:w-96 button {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-          }
-        `
-      }} />
       
       <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100 mb-4">
         <h3 className="font-medium text-gray-900 mb-3">Catégories</h3>
