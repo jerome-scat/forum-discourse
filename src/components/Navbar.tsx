@@ -2,6 +2,13 @@
 import React from 'react';
 
 const Navbar = () => {
+  // This component should only show in Lovable preview, not in Discourse
+  const isLovablePreview = window.location.hostname.includes('lovable');
+  
+  if (!isLovablePreview) {
+    return null;
+  }
+  
   return (
     <nav className="cockpitlab-topnav">
       <div className="cockpitlab-topnav-container">

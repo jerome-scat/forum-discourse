@@ -1,9 +1,9 @@
 
 // CockpitLab Discourse Theme - Main SCSS file
 
-@import "../common/variables";
-@import "../common/global";
-@import "../common/buttons";
-@import "../common/topic-list";
-@import "../common/forms";
-@import "../common/footer";
+@import "./variables";
+@import "./global";
+@import "./buttons";
+@import "./topic-list";
+@import "./forms";
+// Remove footer import to avoid rendering the footer
