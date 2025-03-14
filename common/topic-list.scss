@@ -21,11 +21,10 @@
 
 .topic-card .main-link {
   display: grid;
-  grid-template-areas: "title title"
-  "tags tags"
+  grid-template-areas: "title metadata"
+  "tags metadata"
   "excerpt excerpt"
-  "op op"
-  "metadata metadata" !important;
+  "op op" !important;
   grid-template-rows: auto auto 1fr auto auto;
   flex-grow: 1;
   padding: 1rem 1.5rem 1rem 0 !important;
@@ -42,4 +41,9 @@
 
 .badge-category__wrapper .badge-category::before {
   display: none;
+}
+
+.topic-card .main-link .topic-card__metadata {
+  flex-direction: row;
+  margin-left: 0.5em;
 }
