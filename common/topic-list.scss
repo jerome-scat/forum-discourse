@@ -47,3 +47,7 @@
   flex-direction: row;
   margin-left: 0.5em;
 }
+
+.topic-card .main-link .topic-card__metadata .right-aligned {
+  margin-left: unset;
+}
