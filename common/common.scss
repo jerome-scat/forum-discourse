@@ -2,9 +2,9 @@
 // CockpitLab Discourse Theme - Main SCSS file
 // This file imports other component-specific files
 
-@import "./variables";
-@import "./global";
-@import "./buttons";
-@import "./topic-list";
-@import "./forms";
+@import "common/variables";
+@import "common/global";
+@import "common/buttons";
+@import "common/topic-list";
+@import "common/forms";
 // Footer styles are intentionally excluded
