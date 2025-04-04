@@ -20,16 +20,16 @@
 }
 
 .topic-card .main-link {
-  display: grid;
-  grid-template-areas: "title metadata"
-  "tags metadata"
-  "excerpt excerpt"
-  "op op" !important;
-  grid-template-rows: auto auto 1fr auto auto;
-  flex-grow: 1;
-  padding: 1rem 1.5rem 1rem 0 !important;
-  box-sizing: border-box;
-  box-shadow: none !important;
+    display: grid;
+    grid-template-areas: "title title"
+      "tags tags"
+      "excerpt excerpt"
+      "op metadata" !important;
+    grid-template-rows: auto auto 1fr auto auto;
+    flex-grow: 1;
+    padding: 1rem 1.5rem 1rem 0 !important;
+    box-sizing: border-box;
+    box-shadow: none !important;
 }
 
 .badge-category__wrapper {
