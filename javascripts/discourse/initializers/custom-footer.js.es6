@@ -6,10 +6,6 @@ export default {
   initialize() {
     withPluginApi("0.8.7", (api) => {
       api.decorateWidget("site-footer:after", (helper) => {
-        // on masque d'abord le footer Discourse
-        helper.setClass("hide-powered-by", "#discourse-footer");
-
-        // on crée notre footer Lovable
         return helper.h(
           "div#cockpitlab-footer.custom-footer-wrapper",
           helper.h("p.custom-footer-text", [
