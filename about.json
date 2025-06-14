@@ -9,7 +9,7 @@
       "discourse/connectors/site-footer/custom-footer.html"
     ],
     "css": [
-      "scss/common/common.scss"
+      "scss/common.scss"
     ],
     "js": [
       "javascripts/discourse/initializers/custom-footer.js.es6"
