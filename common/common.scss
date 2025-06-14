@@ -180,37 +180,30 @@ ol.category-breadcrumb, ul#navigation-bar {
   50% { opacity: 1; }
   100% { opacity: 0; transform: scale(1.1); }
 }
-/* -------------------------------------------------- */
-/* CUSTOM FOOTER - visible dans body, pas <footer>    */
-/* -------------------------------------------------- */
-
-#cockpitlab-footer {
+/* CUSTOM FOOTER */
+.custom-footer-wrapper {
   background-color: var(--primary);
   padding: 1.5rem 1rem;
   text-align: center;
   margin-top: 3rem;
   border-top: 1px solid var(--primary-hover);
 }
-
 .custom-footer-text {
   color: white;
   font-size: 0.9rem;
   margin: 0;
   line-height: 1.5;
 }
-
 .custom-footer-text .signature {
   color: #ffecb3;
   font-weight: bold;
 }
-
 .footer-contact-link {
   color: white;
   text-decoration: underline;
   margin-left: 10px;
 }
-
-/* Supprimer le footer natif Discourse */
+/* Masque le footer par défaut*/
 #discourse-footer {
   display: none !important;
 }
