@@ -180,3 +180,35 @@ ol.category-breadcrumb, ul#navigation-bar {
   50% { opacity: 1; }
   100% { opacity: 0; transform: scale(1.1); }
 }
+/* -------------------------------------------------- */
+/* CUSTOM FOOTER                                      */
+/* -------------------------------------------------- */
+
+.custom-footer-wrapper {
+  background-color: var(--primary);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.custom-footer-text {
+  color: white;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.custom-footer-text .signature {
+  color: #ffecb3;
+  font-weight: bold;
+}
+
+.footer-contact-link {
+  color: white;
+  text-decoration: underline;
+  margin-left: 10px;
+}
+
+/* Masquer le footer natif Discourse */
+#discourse-footer {
+  display: none !important;
+}
