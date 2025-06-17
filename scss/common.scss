@@ -1,13 +1,4 @@
-body::after {
-  content: "– thème en cours de test –";
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  text-align: center;
-  padding: 0.5em 0;
-  font-size: 0.75em;
-  z-index: 9999;
+/* test d’application du thème */
+body {
+  outline: 5px solid red !important;
 }
