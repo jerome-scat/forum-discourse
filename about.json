@@ -3,5 +3,15 @@
   "about_url": "https://github.com/jerome-scat/forum-discourse",
   "license_url": "https://github.com/jerome-scat/forum-discourse/blob/main/LICENSE",
   "version": "0.1",
-  "assets": {}
+  "assets": {
+    "connectors": {
+      "site-footer": "connectors/site-footer/custom-footer.html"
+    },
+    "javascripts": [
+      "javascripts/initializers/custom-footer.js.es6"
+    ],
+    "stylesheets": [
+      "scss/common.scss"
+    ]
+  }
 }
