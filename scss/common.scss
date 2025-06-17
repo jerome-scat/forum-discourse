@@ -1,9 +1,13 @@
-/* common styles for forum theme */
 body::after {
   content: "– thème en cours de test –";
-  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
   text-align: center;
+  padding: 0.5em 0;
   font-size: 0.75em;
-  margin: 2em 0;
-  color: #999;
+  z-index: 9999;
 }
